@@ -1,3 +1,5 @@
+// THIS HOLDS THE HOME PAGE HTML
+
 var HomeBody = React.createClass({
 
    render: function() {
@@ -74,6 +76,8 @@ var HomePageBox = React.createClass({
         );
     }
 });
+
+// THIS RENDERS EVERYTHING TO INDEX.html
 
 var HomePageListToggle = React.createClass({
  	//Set Initial State

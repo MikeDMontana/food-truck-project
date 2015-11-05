@@ -1,3 +1,5 @@
+// THIS HOLDS THE MAP
+
 var MapHolderLg = React.createClass({
   render: function(){
     return(
@@ -38,6 +40,8 @@ var MapHolderGlobal = React.createClass({
   }
 });
 
+
+// THIS HOLDS THE TRUCK LIST
 
 var TruckList = React.createClass({
 
@@ -132,6 +136,9 @@ var TruckListHolder = React.createClass({
   }
 });
 
+
+// THIS RENDERS EVERYTHING
+
 var TruckBox = React.createClass({
     //Set initial state-----------------
     getInitialState: function(){
@@ -180,6 +187,3 @@ var TruckBox = React.createClass({
         );
     }
 });
-
-
-// React.render(<TruckBox url="/api/trucks/"/>, document.getElementById("react-box"));
