@@ -17,44 +17,44 @@ var HomeBody = React.createClass({
 					      <div className="row">
 					        <div className="col-md-3 hidden-sm hidden-xs">
 					          <button className="btn btn-warning ghost center-block" onClick={this.props.showTrucksClick}>
-					            <h3>EAT NOW.</h3>
+					            <h3>ALL TRUCKS.</h3>
 					          </button>
 					        </div>
 					        <div className="col-sm-12 hidden-md hidden-lg">
 					          <button className="btn btn-warning ghost center-block resp-padded" onClick={this.props.showTrucksClick}>
-					            <h2>EAT NOW.</h2>
+					            <h2>ALL TRUCKS.</h2>
 					          </button>
 					        </div>
 					        <div className="col-md-3 hidden-sm hidden-xs">
-					          <button className="btn btn-warning ghost center-block" onclick="location.href='truckList.html'">
-					            <h3>BREAKFAST.</h3>
-					          </button>
-					        </div>
-					        <div className="col-sm-12 hidden-md hidden-lg">
-					          <button className="btn btn-warning ghost center-block resp-padded" onclick="location.href='truckList.html'">
-					            <h2>BREAKFAST.</h2>
-					          </button>
-					        </div>
-
-					        <div className="col-md-3 hidden-sm hidden-xs">
-					          <button className="btn btn-warning ghost center-block">
+					          <button className="btn btn-warning ghost center-block" onClick={this.props.toggleCat.bind(this, "lunch")}>
 					            <h3>LUNCH.</h3>
 					          </button>
 					        </div>
 					        <div className="col-sm-12 hidden-md hidden-lg">
-					          <button className="btn btn-warning ghost center-block resp-padded" onclick="location.href='truckList.html'">
+					          <button className="btn btn-warning ghost center-block resp-padded" onClick={this.props.toggleCat.bind(this, "lunch")}>
 					            <h2>LUNCH.</h2>
 					          </button>
 					        </div>
 
 					        <div className="col-md-3 hidden-sm hidden-xs">
-					          <button className="btn btn-warning ghost center-block" onclick="location.href='truckList.html'">
+					          <button className="btn btn-warning ghost center-block"  onClick={this.props.toggleCat.bind(this, "dinner")}>
 					            <h3>DINNER.</h3>
 					          </button>
 					        </div>
 					        <div className="col-sm-12 hidden-md hidden-lg">
-					          <button className="btn btn-warning ghost center-block resp-padded" onclick="location.href='truckList.html'">
+					          <button className="btn btn-warning ghost center-block resp-padded" onClick={this.props.toggleCat.bind(this, "dinner")}>
 					            <h2>DINNER.</h2>
+					          </button>
+					        </div>
+
+					        <div className="col-md-3 hidden-sm hidden-xs">
+					          <button className="btn btn-warning ghost center-block" onClick={this.props.toggleCat.bind(this, "other")}>
+					            <h3>OTHER.</h3>
+					          </button>
+					        </div>
+					        <div className="col-sm-12 hidden-md hidden-lg">
+					          <button className="btn btn-warning ghost center-block resp-padded" onClick={this.props.toggleCat.bind(this, "other")}>
+					            <h2>OTHER.</h2>
 					          </button>
 					        </div>
 					      </div>
@@ -71,7 +71,7 @@ var HomePageBox = React.createClass({
     render: function() {
         return (
             <div>
-                <HomeBody showTrucksClick={this.props.showTrucksClick}/>
+                <HomeBody showTrucksClick={this.props.showTrucksClick} showCatClick = {this.props.showCatClick} toggleCat = {this.props.toggleCat}/>
             </div>
         );
     }
@@ -82,13 +82,34 @@ var HomePageBox = React.createClass({
 var HomePageListToggle = React.createClass({
  	//Set Initial State
 	getInitialState: function(){
-		return {data: [], showList: false, showHome: true};
+		return {data: [], showList: false, showHome: true, showCat: false, truckCat: []};
 	},
  	//Set toggle situation
  	showTrucksClick: function(){
  		this.setState({showList: true});
  		this.setState({showHome: false});
  	},
+
+ 	showCatClick: function(){
+ 		this.setState({showHome: false});
+ 		this.setState({showCat: true});
+ 	},
+
+	toggleCat: function (category) {
+	        function filterCat(truck){
+	        	for (var i=0; i<truck.timeCategory.length; i++){
+	        		if (truck.timeCategory[i] === category){
+	        			return truck;
+	        		}
+	        	}
+	        }
+
+	        var truckCat = this.state.data.filter(filterCat);
+
+	        this.setState({truckCat: truckCat});
+
+	        this.showCatClick();
+	  },
 
  	loadTrucksFromServer: function(){
         $.ajax({
@@ -114,12 +135,14 @@ var HomePageListToggle = React.createClass({
  	//Render
  	render: function(){
  		var showTruckList = this.state.showList ? <TruckBox data={this.state.data}/> : null;
- 		var showHomePage = this.state.showHome ? <HomePageBox showTrucksClick={this.showTrucksClick}/> : null;
+ 		var showCatList = this.state.showCat ? <TruckBox data={this.state.truckCat}/> : null;
+ 		var showHomePage = this.state.showHome ? <HomePageBox showTrucksClick={this.showTrucksClick} showCatClick = {this.showCatClick} toggleCat = {this.toggleCat}/> : null;
  		console.log(this.state.data);
  		return(
  			<div>
  				{showHomePage}
  				{showTruckList}
+ 				{showCatList}
  			</div>
  			);
  	}
