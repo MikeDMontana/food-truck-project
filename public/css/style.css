@@ -124,6 +124,11 @@
 
 
 /*TRUCK LIST PAGE*/
+
+#list-back-button{
+    margin-left: -5%;
+}
+
 .truck-header{
     margin-top: 25px;
     width: 100%;

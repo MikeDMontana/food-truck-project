@@ -16,12 +16,12 @@ var HomeBody = React.createClass({
 					      </div>
 					      <div className="row">
 					        <div className="col-md-3 hidden-sm hidden-xs">
-					          <button className="btn btn-warning ghost center-block" onClick={this.props.showTrucksClick}>
+					          <button className="btn btn-warning ghost center-block" onClick={this.props.toggleCat.bind(this, "lunch" || "dinner" || "other")}>
 					            <h3>ALL TRUCKS.</h3>
 					          </button>
 					        </div>
 					        <div className="col-sm-12 hidden-md hidden-lg">
-					          <button className="btn btn-warning ghost center-block resp-padded" onClick={this.props.showTrucksClick}>
+					          <button className="btn btn-warning ghost center-block resp-padded" onClick={this.props.toggleCat.bind(this, "lunch" || "dinner" || "other")}>
 					            <h2>ALL TRUCKS.</h2>
 					          </button>
 					        </div>
@@ -82,17 +82,12 @@ var HomePageBox = React.createClass({
 var HomePageListToggle = React.createClass({
  	//Set Initial State
 	getInitialState: function(){
-		return {data: [], showList: false, showHome: true, showCat: false, truckCat: []};
+		return {data: [], showHome: true, showCat: false, truckCat: []};
 	},
- 	//Set toggle situation
- 	showTrucksClick: function(){
- 		this.setState({showList: true});
- 		this.setState({showHome: false});
- 	},
 
  	showCatClick: function(){
- 		this.setState({showHome: false});
- 		this.setState({showCat: true});
+ 		this.setState({showHome: !this.state.showHome});
+ 		this.setState({showCat: !this.state.showCat});
  	},
 
 	toggleCat: function (category) {
@@ -134,14 +129,12 @@ var HomePageListToggle = React.createClass({
 
  	//Render
  	render: function(){
- 		var showTruckList = this.state.showList ? <TruckBox data={this.state.data}/> : null;
- 		var showCatList = this.state.showCat ? <TruckBox data={this.state.truckCat}/> : null;
+ 		var showCatList = this.state.showCat ? <TruckBox data={this.state.truckCat} showCatClick={this.showCatClick}/> : null;
  		var showHomePage = this.state.showHome ? <HomePageBox showTrucksClick={this.showTrucksClick} showCatClick = {this.showCatClick} toggleCat = {this.toggleCat}/> : null;
  		console.log(this.state.data);
  		return(
  			<div>
  				{showHomePage}
- 				{showTruckList}
  				{showCatList}
  			</div>
  			);

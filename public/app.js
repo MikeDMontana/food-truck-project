@@ -129,8 +129,15 @@ var TruckList = React.createClass({
 var TruckListHolder = React.createClass({
   render: function(){
     return (
+        <div>
+        <div className="row">
+            <div className="col-xs-3 col-md-2 col-lg-1" id="list-back-button">
+                  <button className="btn btn-warning ghost center-block back-button-sm" onClick={this.props.showCatClick}><i className="fa fa-chevron-left"/></button>
+              </div> 
+        </div>
         <div className="col-lg-6 col-md-12">
           <TruckList data={this.props.data} toggleTruckList={this.props.toggleTruckList} toggleProfileID={this.props.toggleProfileID}/>
+        </div>
         </div>
       )
   }
@@ -165,7 +172,7 @@ var TruckBox = React.createClass({
     },
 
     render: function() {
-      var truckList = this.state.truckList ? <TruckListHolder data={this.props.data} toggleTruckList={this.toggleTruckList} toggleProfileID={this.toggleProfileID}/> : null
+      var truckList = this.state.truckList ? <TruckListHolder data={this.props.data} showCatClick = {this.props.showCatClick} toggleProfileID={this.toggleProfileID} showTrucksClick={this.props.showTrucksClick}/> : null
       var mapHolder = this.state.mapHolder ? <MapHolderGlobal toggleTruckList={this.toggleTruckList}/> : null
       var truckProfile = this.state.truckProfile ? <TruckProfileBox toggleTruckList={this.toggleTruckList} data={this.state.singleTruck[0]}/> : null
         return (
