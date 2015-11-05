@@ -41,11 +41,13 @@ router.route('/trucks')
     newTruck.timeCategory.push("all");
 
   	mongoose.model('Truck').create(newTruck, function(err, truck){
-      		if(err){
-        	res.send("Problems, Houston.");
-      		}else{
-            res.send(truck);
-          }
+      		if(err) {
+                res.send("Problems, Houston.");
+            }
+      		else{
+                return res.redirect("/truckEntry.html");
+                res.send(truck);
+            }
     	});
   	})
 
