@@ -37,6 +37,8 @@ router.route('/trucks')
         facebook: req.body.facebook,
         twitter: req.body.twitter
       }
+    
+    newTruck.timeCategory.push("all");
 
   	mongoose.model('Truck').create(newTruck, function(err, truck){
       		if(err){

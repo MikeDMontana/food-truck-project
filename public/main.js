@@ -16,12 +16,12 @@ var HomeBody = React.createClass({
 					      </div>
 					      <div className="row">
 					        <div className="col-md-3 hidden-sm hidden-xs">
-					          <button className="btn btn-warning ghost center-block" onClick={this.props.toggleCat.bind(this, "lunch" || "dinner" || "other")}>
+					          <button className="btn btn-warning ghost center-block" onClick={this.props.toggleCat.bind(this, "all")}>
 					            <h3>ALL TRUCKS.</h3>
 					          </button>
 					        </div>
 					        <div className="col-sm-12 hidden-md hidden-lg">
-					          <button className="btn btn-warning ghost center-block resp-padded" onClick={this.props.toggleCat.bind(this, "lunch" || "dinner" || "other")}>
+					          <button className="btn btn-warning ghost center-block resp-padded" onClick={this.props.toggleCat.bind(this, "all")}>
 					            <h2>ALL TRUCKS.</h2>
 					          </button>
 					        </div>
@@ -100,6 +100,7 @@ var HomePageListToggle = React.createClass({
 	        }
 
 	        var truckCat = this.state.data.filter(filterCat);
+            console.log(truckCat);
 
 	        this.setState({truckCat: truckCat});
 
