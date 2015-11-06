@@ -45,7 +45,7 @@ router.route('/trucks')
                 res.send("Problems, Houston.");
             }
       		else{
-                return res.redirect("/truckEntry.html");
+                return res.redirect("/html/truckEntry.html");
                 res.send(truck);
             }
     	});

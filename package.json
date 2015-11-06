@@ -13,6 +13,19 @@
     "lint": "eslint client server || true",
     "deploy": "npm run build && modulus deploy --project-name truck-yeah"
     },
+  "keywords": [
+    "react",
+    "reactjs",
+    "boilerplate",
+    "hot",
+    "reload",
+    "hmr",
+    "live",
+    "edit",
+    "webpack",
+    "babel",
+    "react-transform"
+  ],
   "author": "",
   "dependencies": {
     "async": "^1.5.0",

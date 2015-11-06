@@ -1,5 +1,6 @@
 var React = require('react');
 var TruckProfileBox = require('./truckProfile');
+var GoogleMap = require('./map')
 
 
 
@@ -10,7 +11,7 @@ var MapHolderLg = React.createClass({
     return(
       <div>
         <div className='vertical-center truckList-map-container-aside'>
-          <img src="./img/map.png" className="truckList-map-aside"/>
+          <GoogleMap lat="12.33" lng="12.345"/>
         </div>
       </div>
     )
