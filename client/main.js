@@ -1,3 +1,6 @@
+var React = require('react');
+var TruckBox = require('./app')
+
 // THIS HOLDS THE HOME PAGE HTML
 
 var HomeBody = React.createClass({
@@ -142,4 +145,4 @@ var HomePageListToggle = React.createClass({
  	}
 });
 
-React.render(<HomePageListToggle url="/api/trucks/"/>, document.getElementById("render-here"));
+module.exports = HomePageListToggle;

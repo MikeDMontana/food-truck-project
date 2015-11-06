@@ -1,3 +1,8 @@
+var React = require('react');
+var TruckProfileBox = require('./truckProfile');
+
+
+
 // THIS HOLDS THE MAP
 
 var MapHolderLg = React.createClass({
@@ -194,3 +199,5 @@ var TruckBox = React.createClass({
         );
     }
 });
+      
+module.exports = TruckBox;

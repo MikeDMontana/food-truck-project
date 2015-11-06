@@ -1,3 +1,5 @@
+var React = require('react');
+
 var TruckProfileLg = React.createClass({
     render: function() {
         
@@ -617,3 +619,5 @@ var TruckProfileBox = React.createClass({
         );
     }
 });
+
+module.exports = TruckProfileBox;

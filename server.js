@@ -28,7 +28,7 @@ var port = process.env.PORT || 4000;
 
 var truckRoutes = require('./routes/routes');
 
-app.use(express.static('public'));
+//app.use(express.static('public'));
 
 app.use('/api', truckRoutes);
 
