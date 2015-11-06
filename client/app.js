@@ -11,7 +11,7 @@ var MapHolderLg = React.createClass({
     return(
       <div>
         <div className='vertical-center truckList-map-container-aside'>
-          <GoogleMap lat="12.33" lon="12.345"/>
+          <GoogleMap lat="12.33" lon="12.345" data={this.props.data}/>
         </div>
       </div>
     )
@@ -35,11 +35,11 @@ var MapHolderGlobal = React.createClass({
     return(
         <div>        
          <div className="col-lg-6 hidden-md hidden-sm hidden-xs">
-            <MapHolderLg/>
+            <MapHolderLg data={this.props.data}/>
           </div>
 
           <div className="col-xs-12 hidden-lg">
-            <MapHolderSm/>
+            <MapHolderSm data={this.props.data}/>
           </div>
         </div>
       )
@@ -178,8 +178,9 @@ var TruckBox = React.createClass({
     },
 
     render: function() {
+      console.log(this.props.data[0].lat);
       var truckList = this.state.truckList ? <TruckListHolder data={this.props.data} showCatClick = {this.props.showCatClick} toggleProfileID={this.toggleProfileID} showTrucksClick={this.props.showTrucksClick}/> : null
-      var mapHolder = this.state.mapHolder ? <MapHolderGlobal toggleTruckList={this.toggleTruckList}/> : null
+      var mapHolder = this.state.mapHolder ? <MapHolderGlobal toggleTruckList={this.toggleTruckList} data={this.props.data}/> : null
       var truckProfile = this.state.truckProfile ? <TruckProfileBox toggleTruckList={this.toggleTruckList} data={this.state.singleTruck[0]}/> : null
         return (
             <div>

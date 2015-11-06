@@ -33,6 +33,7 @@ const GoogleMap = React.createClass({
 
     
   render() {
+    
     return (
       <Gmaps
         width={"100%"}
@@ -43,16 +44,13 @@ const GoogleMap = React.createClass({
         loadingMessage={'Be happy'}
         params={{v: '3.exp'}}
         onMapCreated={this.onMapCreated}>
+        
         <Marker
-          lat={coords.lat}
-          lng={coords.lng}
-          draggable={true}
+          lat={this.props.data[0].lat}
+          lng={this.props.data[0].lon}
+          draggable={false}
           onDragEnd={this.onDragEnd} />
-        <Marker
-          lat= "46.870824"
-          lng= "-113.996508"
-          draggable={true}
-          onDragEnd={this.onDragEnd} />
+
     
 
       </Gmaps>

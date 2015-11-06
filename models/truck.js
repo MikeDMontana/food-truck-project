@@ -20,7 +20,9 @@ var TruckSchema = new Schema({
     payment: Array,
     foodOptions: Array,
     facebook: String,
-    twitter: String
+    twitter: String,
+    lat: String,
+    lon: String
 });
 
 module.exports = mongoose.model('Truck', TruckSchema);

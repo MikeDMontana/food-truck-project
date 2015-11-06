@@ -49,7 +49,9 @@ router.route('/trucks')
         payment: req.body.payment,
         foodOptions: req.body.foodOptions,
         facebook: req.body.facebook,
-        twitter: req.body.twitter
+        twitter: req.body.twitter,
+        lat: req.body.lat,
+        lon: req.body.lon 
       }
 
   	mongoose.model('Truck').create(newTruck, function(err, truck){
@@ -110,7 +112,8 @@ router.route('/trucks/:truck_id')
             truck.foodOptions = req.body.foodOptions;
             truck.facebook = req.body.facebook;
             truck.twitter = req.body.twitter;
-            console.log(req.body.truckName)
+            truck.lat = req.body.lat;
+            truck.lon = req.body.lon;
          
             truck.save(function(err) {
                 if (err)
