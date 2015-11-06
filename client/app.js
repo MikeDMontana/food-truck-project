@@ -11,7 +11,7 @@ var MapHolderLg = React.createClass({
     return(
       <div>
         <div className='vertical-center truckList-map-container-aside'>
-          <GoogleMap lat="12.33" lng="12.345"/>
+          <GoogleMap lat="12.33" lon="12.345"/>
         </div>
       </div>
     )

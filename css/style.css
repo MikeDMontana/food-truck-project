@@ -143,6 +143,7 @@
 }
 
 .truckList-map-container-aside {
+    width: 40%;
     position: fixed; 
     min-height: 85vh
 }

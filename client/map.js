@@ -12,6 +12,11 @@ const GoogleMap = React.createClass({
     map.setOptions({
       disableDefaultUI: true
     });
+    google.maps.event.addDomListener(window, "resize", function() {
+         var center = map.getCenter();
+            google.maps.event.trigger(map, "resize");
+            map.setCenter(center); 
+    })
   },
 
   onDragEnd(e) {
@@ -30,8 +35,8 @@ const GoogleMap = React.createClass({
   render() {
     return (
       <Gmaps
-        width={"600px"}
-        height={'400px'}
+        width={"100%"}
+        height={'50vh'}
         lat={coords.lat}
         lng={coords.lng}
         zoom={16}
@@ -56,4 +61,4 @@ const GoogleMap = React.createClass({
 
 });
 
-module.exports = GoogleMap;
+module.exports = GoogleMap; 
