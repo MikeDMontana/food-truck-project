@@ -50,6 +50,11 @@ const GoogleMap = React.createClass({
           lng={this.props.data[0].lon}
           draggable={false}
           onDragEnd={this.onDragEnd} />
+        <Marker
+          lat={this.props.data[1].lat}
+          lng={this.props.data[1].lon}
+          draggable={false}
+          onDragEnd={this.onDragEnd} />
 
     
 
