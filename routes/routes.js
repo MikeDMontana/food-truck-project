@@ -22,6 +22,7 @@ router.route('/trucks')
         truckName: req.body.truckName,
         city: req.body.city,
         description: req.body.description,
+        image: req.body.image,
         cuisine: cleanCuisine,
         currentLocation: req.body.currentLocation,
         monTime: req.body.monTime,
@@ -84,6 +85,7 @@ router.route('/trucks/:truck_id')
             truck.truckName = req.body.truckName;
             truck.city = req.body.city;
             truck.description = req.body.description;
+            truck.image = req.body.image;
             truck.cuisine = req.body.cuisine;
             truck.currentLocation = req.body.currentLocation;
             truck.monTime = req.body.monTime,

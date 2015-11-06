@@ -55,15 +55,16 @@ var TruckProfileLg = React.createClass({
           )
         }
       });
+      
+      var imgg = this.props.data.image
+      var media = "/media/"
 
       return (
         <div>
         <div className='hidden-sm hidden-xs hidden-md'>
           <div className="row">
           <div className="col-lg-3">
-            <a href="#" className="thumbnail">
-              <img src="./img/elCaz.jpg"/>
-            </a>
+            <img className="img-responsive" src={imgg + media}/>
           </div>
           <div className="col-lg-7 truckPage-vert-push-sm">
             <h1 className="profile-title">{this.props.data.truckName}</h1><br></br>
