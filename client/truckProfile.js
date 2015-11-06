@@ -56,15 +56,17 @@ var TruckProfileLg = React.createClass({
         }
       });
       
-      var imgg = this.props.data.image
-      var media = "/media/"
+      var imgg = this.props.data.image[1];
+      var media = "/media/";
 
       return (
         <div>
         <div className='hidden-sm hidden-xs hidden-md'>
           <div className="row">
           <div className="col-lg-3">
+            <a href={this.props.data.image[0]}>
             <img className="img-responsive" src={imgg + media}/>
+            </a>
           </div>
           <div className="col-lg-7 truckPage-vert-push-sm">
             <h1 className="profile-title">{this.props.data.truckName}</h1><br></br>
@@ -198,14 +200,15 @@ var TruckProfileMd = React.createClass({
         }
       });
 
+      var imgg = this.props.data.image
+      var media = "/media/"
+
       return (
         <div>
         <div className='hidden-lg hidden-sm hidden-xs'>
           <div className="row">
               <div className="col-md-3">
-                <a href="#" className="thumbnail">
-                  <img src="./img/elCaz.jpg"/>
-                </a>
+                <img className="img-responsive" src={imgg + media}/>
               </div>
 
               <div className="col-md-5 truckPage-vert-push-sm">
@@ -346,14 +349,15 @@ var TruckProfileSm = React.createClass({
       }
       });
 
+      var imgg = this.props.data.image
+      var media = "/media/"
+
       return (
         <div>
         <div className='hidden-xs hidden-md hidden-lg'>
           <div className="row">
               <div className="col-sm-3">
-                <a href="#" className="thumbnail">
-                  <img src="./img/elCaz.jpg"/>
-                </a>
+                <img className="img-responsive" src={imgg + media}/>
               </div>
 
               <div className="col-sm-5 truckPage-vert-push-sm">
@@ -500,6 +504,10 @@ var TruckProfileXs = React.createClass({
       }
       });
 
+      var imgg = this.props.data.image
+      var media = "/media/"
+      var smallPic = "?size=t"
+
         return (
         <div>
         <div className='hidden-sm hidden-md hidden-lg'>
@@ -510,9 +518,7 @@ var TruckProfileXs = React.createClass({
           </div>
           <div className="row">
               <div className="col-sm-3">
-                <a href="#" className="thumbnail truckPage-img-holder-sm">
-                  <img src="./img/elCaz.jpg"/>
-                </a>
+                <img className="img-responsive truckPage-picture-xs" src={imgg + media + smallPic}/>
               </div>
 
               <div className="col-sm-7 truckPage-vert-push-sm">

@@ -12,18 +12,31 @@ router.use(function(req, res, next) {
 router.route('/trucks')
 // POST NEW TRUCK
 	.post(function(req, res){
-        
-        function clean(value){
-            return value;
-        }
 
-    var cleanCuisine = req.body.cuisine.filter(clean);
+    console.log(req.body.image);
+
+    var cleanPic = req.body.image.substring(0, 34);
+
+    var newCuisine = [];
+
+    for (var i = 0; i < req.body.cuisine.length; i++) {
+        if (req.body.cuisine[i]) {
+          newCuisine.push(req.body.cuisine[i]);
+        }
+    }
+
+    var timeCats = ["all"];
+
+    for(var i=0; i<req.body.timeCategory.length; i++){
+        timeCats.push(req.body.timeCategory[i]);
+    }
+
     var newTruck = {
         truckName: req.body.truckName,
         city: req.body.city,
         description: req.body.description,
-        image: req.body.image,
-        cuisine: cleanCuisine,
+        image: [req.body.image, cleanPic],
+        cuisine: newCuisine,
         currentLocation: req.body.currentLocation,
         monTime: req.body.monTime,
         tuesTime: req.body.tuesTime,
@@ -32,21 +45,18 @@ router.route('/trucks')
         friTime: req.body.friTime,
         satTime: req.body.satTime,
         sunTime: req.body.sunTime,
-        timeCategory: req.body.timeCategory,
+        timeCategory: timeCats,
         payment: req.body.payment,
         foodOptions: req.body.foodOptions,
         facebook: req.body.facebook,
         twitter: req.body.twitter
       }
-    
-    newTruck.timeCategory.push("all");
 
   	mongoose.model('Truck').create(newTruck, function(err, truck){
       		if(err) {
                 res.send("Problems, Houston.");
             }
       		else{
-                return res.redirect("/html/truckEntry.html");
                 res.send(truck);
             }
     	});
