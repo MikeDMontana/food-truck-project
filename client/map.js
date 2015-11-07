@@ -33,7 +33,17 @@ const GoogleMap = React.createClass({
 
     
   render() {
-    
+    var pinLoop = this.props.data.map(function(truck){
+        return(
+            <Marker
+              lat={truck.lat}
+              lng={truck.lon}
+              draggable={false}
+              onDragEnd={truck.onDragEnd} />
+            
+          )
+      });
+      
     return (
       <Gmaps
         width={"100%"}
@@ -45,16 +55,7 @@ const GoogleMap = React.createClass({
         params={{v: '3.exp'}}
         onMapCreated={this.onMapCreated}>
         
-        <Marker
-          lat={this.props.data[0].lat}
-          lng={this.props.data[0].lon}
-          draggable={false}
-          onDragEnd={this.onDragEnd} />
-        <Marker
-          lat={this.props.data[1].lat}
-          lng={this.props.data[1].lon}
-          draggable={false}
-          onDragEnd={this.onDragEnd} />
+        {pinLoop}
 
     
 
