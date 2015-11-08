@@ -1,6 +1,34 @@
 var React = require('react');
+import {Gmaps, Marker, InfoWindow, Circle} from 'react-gmaps';
+
 
 var TruckProfileLg = React.createClass({
+    
+   onMapCreated(map) {
+    var latty = this.props.data.lat;
+    var longy = this.props.data.lon;
+    map.setOptions({
+      disableDefaultUI: true
+    });
+    google.maps.event.addDomListener(window, "resize", function() {
+            google.maps.event.trigger(map, "resize");
+            map.setCenter({lat: Number(latty), lng: Number(longy)}); 
+    })
+  },
+
+  onDragEnd(e) {
+    console.log('onDragEnd', e);
+  },
+
+  onCloseClick() {
+    console.log('onCloseClick');
+  },
+
+  onClick(e) {
+    console.log('onClick', e);
+  },
+
+    
     render: function() {
         
       var categoryLoop = this.props.data.timeCategory.map(function(truck){
@@ -65,7 +93,7 @@ var TruckProfileLg = React.createClass({
           <div className="row">
           <div className="col-lg-3">
             <a href={this.props.data.image[0]}>
-            <img className="img-responsive" src={imgg + media}/>
+            <img className="img-responsive thumbnail" src={imgg + media}/>
             </a>
           </div>
           <div className="col-lg-7 truckPage-vert-push-sm">
@@ -130,7 +158,23 @@ var TruckProfileLg = React.createClass({
             </h4></table>
         </div>
         <div className="col-lg-7 col-lg-offset-1">
-          <img src="./img/map.png" className="truckList-map-aside"/>
+          <Gmaps
+            width={"100%"}
+            height={'50vh'}
+            lat={this.props.data.lat}
+            lng={this.props.data.lon}
+            zoom={16}
+            loadingMessage={'Be happy'}
+            params={{v: '3.exp'}}
+            onMapCreated={this.onMapCreated}>
+
+            <Marker
+              lat={this.props.data.lat}
+              lng={this.props.data.lon}
+              draggable={false}
+              onDragEnd={this.onDragEnd} />
+          
+          </Gmaps>
         </div>
       </div>
     </div> 
@@ -143,6 +187,31 @@ var TruckProfileLg = React.createClass({
 
 
 var TruckProfileMd = React.createClass({
+    
+   onMapCreated(map) {
+    var latty = this.props.data.lat;
+    var longy = this.props.data.lon;
+    map.setOptions({
+      disableDefaultUI: true
+    });
+    google.maps.event.addDomListener(window, "resize", function() {
+            google.maps.event.trigger(map, "resize");
+            map.setCenter({lat: Number(latty), lng: Number(longy)}); 
+    })
+  },
+    
+  onDragEnd(e) {
+    console.log('onDragEnd', e);
+  },
+
+  onCloseClick() {
+    console.log('onCloseClick');
+  },
+
+  onClick(e) {
+    console.log('onClick', e);
+  },
+    
     render: function() {
 
       var categoryLoop = this.props.data.timeCategory.map(function(truck){
@@ -209,7 +278,7 @@ var TruckProfileMd = React.createClass({
           <div className="row">
               <div className="col-md-3">
                 <a href={this.props.data.image[0]}>
-                <img className="img-responsive" src={imgg + media}/>
+                <img className="img-responsive thumbnail" src={imgg + media}/>
                 </a>
               </div>
 
@@ -280,7 +349,23 @@ var TruckProfileMd = React.createClass({
             </h4></table>
             </div>
             <div className="col-md-7 col-md-offset-1">
-              <img src="./img/map.png" className="truckList-map-below"/>
+              <Gmaps
+                width={"100%"}
+                height={'45vh'}
+                lat={this.props.data.lat}
+                lng={this.props.data.lon}
+                zoom={16}
+                loadingMessage={'Be happy'}
+                params={{v: '3.exp'}}
+                onMapCreated={this.onMapCreated}>
+
+                <Marker
+                  lat={this.props.data.lat}
+                  lng={this.props.data.lon}
+                  draggable={false}
+                  onDragEnd={this.onDragEnd} />
+          
+              </Gmaps>
             </div>
           </div>
         </div>
@@ -291,6 +376,31 @@ var TruckProfileMd = React.createClass({
 
 // SMALL SIZE PROFILE-------------------------------------------------------
 var TruckProfileSm = React.createClass({
+    
+   onMapCreated(map) {
+    var latty = this.props.data.lat;
+    var longy = this.props.data.lon;
+    map.setOptions({
+      disableDefaultUI: true
+    });
+    google.maps.event.addDomListener(window, "resize", function() {
+            google.maps.event.trigger(map, "resize");
+            map.setCenter({lat: Number(latty), lng: Number(longy)}); 
+    })
+  },
+
+  onDragEnd(e) {
+    console.log('onDragEnd', e);
+  },
+
+  onCloseClick() {
+    console.log('onCloseClick');
+  },
+
+  onClick(e) {
+    console.log('onClick', e);
+  },
+    
     render: function() {
 
       var categoryLoop = this.props.data.timeCategory.map(function(truck){
@@ -360,7 +470,7 @@ var TruckProfileSm = React.createClass({
           <div className="row">
               <div className="col-sm-3">
               <a href={this.props.data.image[0]}>
-              <img className="img-responsive" src={imgg + media}/>
+              <img className="img-responsive thumbnail" src={imgg + media}/>
               </a>              
               </div>
 
@@ -435,7 +545,23 @@ var TruckProfileSm = React.createClass({
             </h4></table>
         </div>
         <div className="col-sm-7 col-sm-offset-1">
-          <img src="./img/map.png" className="truckList-map-below"/>
+              <Gmaps
+                width={"100%"}
+                height={'45vh'}
+                lat={this.props.data.lat}
+                lng={this.props.data.lon}
+                zoom={16}
+                loadingMessage={'Be happy'}
+                params={{v: '3.exp'}}
+                onMapCreated={this.onMapCreated}>
+
+                <Marker
+                  lat={this.props.data.lat}
+                  lng={this.props.data.lon}
+                  draggable={false}
+                  onDragEnd={this.onDragEnd} />
+          
+              </Gmaps>
         </div>
 
       </div>
@@ -449,6 +575,31 @@ var TruckProfileSm = React.createClass({
 // EXTRA SMALL SIZE PROFILE-------------------------------------------------------
 
 var TruckProfileXs = React.createClass({
+    
+   onMapCreated(map) {
+    var latty = this.props.data.lat;
+    var longy = this.props.data.lon;
+    map.setOptions({
+      disableDefaultUI: true
+    });
+    google.maps.event.addDomListener(window, "resize", function() {
+            google.maps.event.trigger(map, "resize");
+            map.setCenter({lat: Number(latty), lng: Number(longy)}); 
+    })
+  },
+
+  onDragEnd(e) {
+    console.log('onDragEnd', e);
+  },
+
+  onCloseClick() {
+    console.log('onCloseClick');
+  },
+
+  onClick(e) {
+    console.log('onClick', e);
+  },
+    
     render: function() {
 
       var categoryLoop = this.props.data.timeCategory.map(function(truck){
@@ -523,7 +674,7 @@ var TruckProfileXs = React.createClass({
           <div className="row">
               <div className="col-sm-3">
                 <a href={this.props.data.image[0]}>
-                  <img className="img-responsive truckPage-picture-xs" src={imgg + media + smallPic}/>
+                  <img className="img-responsive truckPage-picture-xs thumbnail" src={imgg + media + smallPic}/>
                 </a>
               </div>
 
@@ -605,9 +756,25 @@ var TruckProfileXs = React.createClass({
         </div>
     </div>
             
-    <div className="row vertical-center truckPage-vh-10 truckPage-map-holder-xs">        
+    <div className="row truckPage-vh-10 truckPage-map-holder-xs">        
         <div className="col-sm-7 col-sm-offset-1">
-          <img src="./img/map.png" className="truckList-map-below"/>
+              <Gmaps
+                width={"100%"}
+                height={'50vh'}
+                lat={this.props.data.lat}
+                lng={this.props.data.lon}
+                zoom={16}
+                loadingMessage={'Be happy'}
+                params={{v: '3.exp'}}
+                onMapCreated={this.onMapCreated}>
+
+                <Marker
+                  lat={this.props.data.lat}
+                  lng={this.props.data.lon}
+                  draggable={false}
+                  onDragEnd={this.onDragEnd} />
+          
+              </Gmaps>
         </div>
 
     </div>
