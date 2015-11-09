@@ -1,5 +1,5 @@
 var React = require('react');
-var TruckBox = require('./app')
+var TruckBox = require('./truckList')
 
 // THIS HOLDS THE HOME PAGE HTML
 
