@@ -67,6 +67,7 @@ app.get('/', function(req, res) {
 });
 
 app.use('/html', express.static('html'));
+app.use('/static', express.static('static'));
 
 
 // Start the webserver

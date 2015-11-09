@@ -3,13 +3,16 @@ var webpack = require('webpack');
 
 module.exports = {
   devtool: 'source-map',
-  entry: [
+  entry: {bundle: [
+    'webpack-hot-middleware/client',
     './client/index'
-  ],
+  ], form: ['webpack-hot-middleware/client',
+    './client/truckEntry']},
   output: {
     path: path.join(__dirname, 'static'),
-    filename: 'bundle.js',
-    publicPath: '/static/'
+    filename: '[name].js',
+    publicPath: '/static/',
+    plugins: [ new webpack.optimize.CommonsChunkPlugin("init.js") ]
   },
   plugins: [
     new webpack.optimize.OccurenceOrderPlugin(),
