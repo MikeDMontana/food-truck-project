@@ -4,7 +4,7 @@ import {Gmaps, Marker, InfoWindow, Circle} from 'react-gmaps';
 var mapStyles = [
   {
     stylers: [
-      { hue: "#D15D39" },
+      { hue: "#D15D38" },
       { saturation: -20 }
     ]
   },{
