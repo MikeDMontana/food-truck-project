@@ -1,6 +1,66 @@
 var React = require('react');
 import {Gmaps, Marker, InfoWindow, Circle} from 'react-gmaps';
 
+var mapStyles = [
+  {
+    stylers: [
+      { hue: "#D15D39" },
+      { saturation: -20 }
+    ]
+  },{
+    featureType: "road",
+    elementType: "geometry",
+    stylers: [
+      { lightness: 100 },
+      { visibility: "simplified" }
+    ]
+  },{
+    featureType: "road",
+    elementType: "labels",
+    stylers: [
+      { visibility: "on" }
+    ]},
+{
+    "featureType": "poi.park",
+    "stylers": [
+      { "visibility": "on" }
+    ]
+  },{
+    "featureType": "poi.attraction",
+    "stylers": [
+      { "visibility": "off" }
+    ]
+  },{
+    "featureType": "poi.business",
+    "stylers": [
+      { "visibility": "off" }
+    ]
+  },{
+    "featureType": "poi.government",
+    "stylers": [
+      { "visibility": "off" }
+    ]
+  },{
+    "featureType": "poi.medical",
+    "stylers": [
+      { "visibility": "off" }
+    ]
+  },{
+    "featureType": "poi.place_of_worship",
+    "stylers": [
+      { "visibility": "off" }
+    ]
+  },{
+    "featureType": "poi",
+    "elementType": "labels.icon",
+    "stylers": [
+      { "visibility": "off" }
+    ]
+  },{
+  }
+
+];
+
 
 var TruckProfileLg = React.createClass({
     
@@ -8,7 +68,8 @@ var TruckProfileLg = React.createClass({
     var latty = this.props.data.lat;
     var longy = this.props.data.lon;
     map.setOptions({
-      disableDefaultUI: true
+      disableDefaultUI: true,
+      styles: mapStyles
     });
     google.maps.event.addDomListener(window, "resize", function() {
             google.maps.event.trigger(map, "resize");
@@ -172,6 +233,7 @@ var TruckProfileLg = React.createClass({
               lat={this.props.data.lat}
               lng={this.props.data.lon}
               draggable={false}
+              icon={'../img/logo_notext_sm.png'}
               onDragEnd={this.onDragEnd} />
           
           </Gmaps>
@@ -192,7 +254,8 @@ var TruckProfileMd = React.createClass({
     var latty = this.props.data.lat;
     var longy = this.props.data.lon;
     map.setOptions({
-      disableDefaultUI: true
+      disableDefaultUI: true,
+      styles: mapStyles
     });
     google.maps.event.addDomListener(window, "resize", function() {
             google.maps.event.trigger(map, "resize");
@@ -363,6 +426,7 @@ var TruckProfileMd = React.createClass({
                   lat={this.props.data.lat}
                   lng={this.props.data.lon}
                   draggable={false}
+                  icon={'../img/logo_notext_sm.png'}
                   onDragEnd={this.onDragEnd} />
           
               </Gmaps>
@@ -381,7 +445,8 @@ var TruckProfileSm = React.createClass({
     var latty = this.props.data.lat;
     var longy = this.props.data.lon;
     map.setOptions({
-      disableDefaultUI: true
+      disableDefaultUI: true,
+      styles: mapStyles
     });
     google.maps.event.addDomListener(window, "resize", function() {
             google.maps.event.trigger(map, "resize");
@@ -559,6 +624,7 @@ var TruckProfileSm = React.createClass({
                   lat={this.props.data.lat}
                   lng={this.props.data.lon}
                   draggable={false}
+                  icon={'../img/logo_notext_sm.png'}
                   onDragEnd={this.onDragEnd} />
           
               </Gmaps>
@@ -580,7 +646,8 @@ var TruckProfileXs = React.createClass({
     var latty = this.props.data.lat;
     var longy = this.props.data.lon;
     map.setOptions({
-      disableDefaultUI: true
+      disableDefaultUI: true,
+      styles: mapStyles
     });
     google.maps.event.addDomListener(window, "resize", function() {
             google.maps.event.trigger(map, "resize");
@@ -771,6 +838,7 @@ var TruckProfileXs = React.createClass({
                 <Marker
                   lat={this.props.data.lat}
                   lng={this.props.data.lon}
+                  icon={'../img/logo_notext_sm.png'}
                   draggable={false}
                   onDragEnd={this.onDragEnd} />
           

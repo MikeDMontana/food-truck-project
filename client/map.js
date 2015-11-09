@@ -6,16 +6,112 @@ const coords = {
   lng: -113.997356
 };
 
+var mapStyles = [
+  {
+    stylers: [
+      { hue: "#D15D39" },
+      { saturation: -20 }
+    ]
+  },{
+    featureType: "road",
+    elementType: "geometry",
+    stylers: [
+      { lightness: 100 },
+      { visibility: "simplified" }
+    ]
+  },{
+    featureType: "road",
+    elementType: "labels",
+    stylers: [
+      { visibility: "on" }
+    ]},
+{
+    "featureType": "poi.park",
+    "stylers": [
+      { "visibility": "on" }
+    ]
+  },{
+    "featureType": "poi.attraction",
+    "stylers": [
+      { "visibility": "off" }
+    ]
+  },{
+    "featureType": "poi.business",
+    "stylers": [
+      { "visibility": "off" }
+    ]
+  },{
+    "featureType": "poi.government",
+    "stylers": [
+      { "visibility": "off" }
+    ]
+  },{
+    "featureType": "poi.medical",
+    "stylers": [
+      { "visibility": "off" }
+    ]
+  },{
+    "featureType": "poi.place_of_worship",
+    "stylers": [
+      { "visibility": "off" }
+    ]
+  },{
+    "featureType": "poi",
+    "elementType": "labels.icon",
+    "stylers": [
+      { "visibility": "off" }
+    ]
+  },{
+  }
+
+];
+
 const GoogleMap = React.createClass({
 
   onMapCreated(map) {
-    map.setOptions({
-      disableDefaultUI: true
+    var tempLatArray = [];
+    var tempLngArray = [];
+      
+    this.props.data.map(function(truck){
+                tempLatArray.push(truck.lat);
+                console.log(tempLatArray);
     });
+      
+    this.props.data.map(function(truck){
+                tempLngArray.push(truck.lon);
+                console.log(tempLngArray);
+    });
+      
+    var latAvg = function(){
+        var sum = 0;
+        for (var i = 0; i < tempLatArray.length; i++){
+            sum += Number(tempLatArray[i]);
+        };
+        var avg = sum / tempLatArray.length;
+        return avg;
+    };
+      
+    var lngAvg = function(){
+        var sum = 0;
+        for (var i = 0; i < tempLngArray.length; i++){
+            sum += Number(tempLngArray[i]);
+        };
+        var avg = sum / tempLngArray.length;
+        return avg;
+    };
+      
+    var pinsAvg = {lat: Number(latAvg()), lng: Number(lngAvg())};
+    
+    map.setOptions({
+      disableDefaultUI: true,
+      styles: mapStyles
+    });
+      
+    map.setCenter(pinsAvg);
+      
     google.maps.event.addDomListener(window, "resize", function() {
-         var center = map.getCenter();
             google.maps.event.trigger(map, "resize");
-            map.setCenter(center); 
+            map.setCenter(pinsAvg); 
     })
   },
 
@@ -39,6 +135,7 @@ const GoogleMap = React.createClass({
               lat={truck.lat}
               lng={truck.lon}
               draggable={false}
+              icon={'../img/logo_notext_sm.png'}
               onDragEnd={truck.onDragEnd} />
             
           )

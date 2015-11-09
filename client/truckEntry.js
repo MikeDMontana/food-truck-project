@@ -1,6 +1,66 @@
 var React = require('react');
 import {Gmaps, Marker, InfoWindow, Circle} from 'react-gmaps';
 
+var mapStyles = [
+  {
+    stylers: [
+      { hue: "#D15D39" },
+      { saturation: -20 }
+    ]
+  },{
+    featureType: "road",
+    elementType: "geometry",
+    stylers: [
+      { lightness: 100 },
+      { visibility: "simplified" }
+    ]
+  },{
+    featureType: "road",
+    elementType: "labels",
+    stylers: [
+      { visibility: "on" }
+    ]},
+{
+    "featureType": "poi.park",
+    "stylers": [
+      { "visibility": "on" }
+    ]
+  },{
+    "featureType": "poi.attraction",
+    "stylers": [
+      { "visibility": "off" }
+    ]
+  },{
+    "featureType": "poi.business",
+    "stylers": [
+      { "visibility": "off" }
+    ]
+  },{
+    "featureType": "poi.government",
+    "stylers": [
+      { "visibility": "off" }
+    ]
+  },{
+    "featureType": "poi.medical",
+    "stylers": [
+      { "visibility": "off" }
+    ]
+  },{
+    "featureType": "poi.place_of_worship",
+    "stylers": [
+      { "visibility": "off" }
+    ]
+  },{
+    "featureType": "poi",
+    "elementType": "labels.icon",
+    "stylers": [
+      { "visibility": "off" }
+    ]
+  },{
+  }
+
+];
+
 var TruckEntryForm = React.createClass({
     
         getInitialState: function(){
@@ -12,7 +72,8 @@ var TruckEntryForm = React.createClass({
             var self = this;
             
             map.setOptions({
-              disableDefaultUI: true
+              disableDefaultUI: true,
+              styles: mapStyles
             });
             
             google.maps.event.addDomListener(window, "resize", function() {
@@ -24,6 +85,7 @@ var TruckEntryForm = React.createClass({
                     var locationMarker = new google.maps.Marker ({
                                             position: event.latLng,
                                             map: map,
+                                            icon: '../img/logo_notext_sm.png',
                                             draggable: true
                                         });
                 
