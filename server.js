@@ -18,7 +18,6 @@ var session      = require('express-session');
 
 // var configDB = require('./config/database.js');
 
-
 var options = {
   server:  { socketOptions: { keepAlive: 1, connectTimeoutMS: 30000 } },
   replset: { socketOptions: { keepAlive: 1, connectTimeoutMS: 30000 } }
@@ -81,6 +80,8 @@ app.use('/static', express.static('static'));
 
 //Passport
 
+require('./config/passport')(passport); // pass passport for configuration
+
 app.use(morgan('dev')); // log every request to the console
 app.use(cookieParser()); // read cookies (needed for auth)
 app.use(bodyParser()); // get information from html forms
@@ -94,7 +95,7 @@ app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
 
 // routes ======================================================================
-// require('./app/routes.js')(app, passport);
+require('./routes/userroutes.js')(app, passport);
 
 
 
