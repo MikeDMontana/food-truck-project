@@ -77,6 +77,6 @@ app.listen(port, hostname, function(err) {
     console.log(err);
     return;
   }
-  console.log('The magic happens at' + hostname + ':' + port);
+  console.log('The magic happens at ' + hostname + ':' + port);
 });
 
