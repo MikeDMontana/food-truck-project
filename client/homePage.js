@@ -1,5 +1,6 @@
 var React = require('react');
 var TruckBox = require('./truckList')
+var NavBar = require('./navbar')
 
 // THIS HOLDS THE HOME PAGE HTML
 
@@ -196,6 +197,8 @@ var HomePageListToggle = React.createClass({
  		console.log(this.state.data);
  		return(
  			<div>
+                <NavBar/>
+                <div id="main-spacer"></div>
  				{showHomePage}
  				{showCatList}
  			</div>

@@ -1,5 +1,6 @@
 var React = require('react');
 import {Gmaps, Marker, InfoWindow, Circle} from 'react-gmaps';
+var NavBar = require('./navbar')
 
 var mapStyles = [
   {
@@ -106,6 +107,8 @@ var TruckEntryForm = React.createClass({
         render: function() {
             return (
                 <div>
+                    <NavBar/>
+                    <div id="main-spacer"></div>
                     <div className="container-fluid">
                       <form action="/api/trucks" method="POST" role="form">
                         <h3>Truck Entry Form</h3>

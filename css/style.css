@@ -1,3 +1,7 @@
+#main-spacer { 
+    padding-top: 125px;
+}
+
 .my-header-sm{
 	background-image: url(../img/background.jpg);
 	background-position: center;
