@@ -26,39 +26,39 @@ var mongodbUri = process.env.MONGOLAB_URI || "mongodb://localhost/trucks";
 var mongooseUri = uriUtil.formatMongoose(mongodbUri);
 
 mongoose.connect(mongooseUri, options);
-app.use(express.static('static'));
+
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 if (process.env.NODE_ENV === 'production') {
-  console.log('Running in production mode');
+  console.log('*****************-----------------------Running in production mode---------------------**************************');
 
   app.use('/static', express.static('static'));
-} else {
-  // When not in production, enable hot reloading
+    } else {
+    // When not in production, enable hot reloading
 
-  var chokidar = require('chokidar');
-  var webpack = require('webpack');
-  var webpackConfig = require('./webpack.config.dev');
-  var compiler = webpack(webpackConfig);
-  app.use(require('webpack-dev-middleware')(compiler, {
-    noInfo: true,
-    publicPath: webpackConfig.output.publicPath
-  }));
-  app.use(require('webpack-hot-middleware')(compiler));
+    var chokidar = require('chokidar');
+    var webpack = require('webpack');
+    var webpackConfig = require('./webpack.config.dev');
+    var compiler = webpack(webpackConfig);
+    app.use(require('webpack-dev-middleware')(compiler, {
+      noInfo: true,
+      publicPath: webpackConfig.output.publicPath
+    }));
+    app.use(require('webpack-hot-middleware')(compiler));
 
-  // Do "hot-reloading" of express stuff on the server
-  // Throw away cached modules and re-require next time
-  // Ensure there's no important state in there!
-  var watcher = chokidar.watch('./server');
-  watcher.on('ready', function() {
-    watcher.on('all', function() {
-      console.log('Clearing /server/ module cache from server');
-      Object.keys(require.cache).forEach(function(id) {
-        if (/\/server\//.test(id)) delete require.cache[id];
+    // Do "hot-reloading" of express stuff on the server
+    // Throw away cached modules and re-require next time
+    // Ensure there's no important state in there!
+    var watcher = chokidar.watch('./server');
+    watcher.on('ready', function() {
+      watcher.on('all', function() {
+        console.log('Clearing /server/ module cache from server');
+        Object.keys(require.cache).forEach(function(id) {
+          if (/\/server\//.test(id)) delete require.cache[id];
+        });
       });
-    });
   });
 }
 
@@ -72,11 +72,11 @@ var truckRoutes = require('./routes/routes');
 app.use('/api', truckRoutes);
 
 app.get('/', function(req, res) {
-  res.sendFile(path.join(__dirname, 'index.html'));
+  res.render('index');
 });
 
-app.use('/html', express.static('html'));
-app.use('/static', express.static('static'));
+// app.use('/html', express.static('html'));
+
 
 //Passport
 
@@ -100,13 +100,14 @@ require('./routes/userroutes.js')(app, passport);
 
 
 // Start the webserver
-var port = config.PORT;
+var port = process.env.PORT || 4000;
 var hostname = config.HOSTNAME;
-app.listen(port, hostname, function(err) {
+
+app.listen(port, function(err) {
   if (err) {
     console.log(err);
     return;
   }
-  console.log('The magic happens at ' + hostname + ':' + port);
+  console.log('The magic happens at ' + ':' + port);
 });
 
