@@ -72,7 +72,7 @@ var truckRoutes = require('./routes/routes');
 app.use('/api', truckRoutes);
 
 app.get('/', function(req, res) {
-  res.sendFile(path.join(__dirname, 'index.html'));
+  res.render('index');
 });
 
 app.use('/html', express.static('html'));
