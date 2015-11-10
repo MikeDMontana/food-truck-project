@@ -2,12 +2,15 @@ var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
+var isLoggedIn = require('./userroutes')
 router.use(bodyParser.urlencoded({ extended: true }))
 
 router.use(function(req, res, next) {
     console.log('Something is happening.');
     next();
 })
+
+
 
 router.route('/trucks')
 // POST NEW TRUCK

@@ -1,18 +1,23 @@
 module.exports = function(app, passport) {
 
     // HOME PAGE (with login links) ========
-    app.get('/', function(req, res) {
-        res.render('index.ejs');
-    });
+    // app.get('/', function(req, res) {
+    //     res.render('index.ejs');
+    // });
 
     // LOGIN ===============================
     app.get('/login', function(req, res) {
         res.render('login.ejs', { message: req.flash('loginMessage') }); 
     });
 
+    app.get('/truckEntry', isLoggedIn, function(req, res) {
+        res.render('truckEntry.ejs'); 
+    });
+
+
     // process the login form
     app.post('/login', passport.authenticate('local-login', {
-        successRedirect : '/profile', // redirect to the secure profile section
+        successRedirect : '/truckEntry', // redirect to the secure profile section
         failureRedirect : '/login', // redirect back to the signup page if there is an error
         failureFlash : true // allow flash messages
     }));
@@ -43,6 +48,7 @@ module.exports = function(app, passport) {
         res.redirect('/');
     });
 };
+
 
 // route middleware to make sure a user is logged in
 function isLoggedIn(req, res, next) {
