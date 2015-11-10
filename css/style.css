@@ -452,6 +452,11 @@ h3.white {
 
 /*NAV BAR STUFF*/
 
+.fixed-nav {
+    position: fixed;
+    width: 100%;
+}
+
 #nav-box{
 	margin-left: 75px;
 }
@@ -528,7 +533,18 @@ h3.white {
 .navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form{
     border-color: #fff;
     position: relative;
-    top: 15px;
+}
+
+.navbar-flyout-lg{
+    top: 4vh;
+}
+
+.navbar-flyout-md{
+    top: 5vh;
+}
+
+.navbar-flyout-sm {
+    top: 40px;
 }
 
 .navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus, .navbar-inverse .navbar-nav>.active>a:hover {
