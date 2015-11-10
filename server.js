@@ -100,13 +100,14 @@ require('./routes/userroutes.js')(app, passport);
 
 
 // Start the webserver
-var port = config.PORT;
+var port = process.env.PORT;
 var hostname = config.HOSTNAME;
-app.listen(port, hostname, function(err) {
+
+app.listen(port, function(err) {
   if (err) {
     console.log(err);
     return;
   }
-  console.log('The magic happens at ' + hostname + ':' + port);
+  console.log('The magic happens at ' + ':' + port);
 });
 
