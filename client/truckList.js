@@ -3,8 +3,6 @@ var TruckProfileBox = require('./truckProfile');
 var GoogleMap = require('./map');
 
 
-
-
 // THIS HOLDS THE MAP
 
 var MapHolderLg = React.createClass({
@@ -48,14 +46,26 @@ var MapHolderGlobal = React.createClass({
 });
 
 
+
+
 // THIS HOLDS THE TRUCK LIST
 
 var TruckList = React.createClass({
 
     render: function() {
-      // ACCESS THE TOGGLE FUNCTION AND ASSOCIATE IT WITH THE BUTTON
+        
         var self = this;
+        
+    // ----- LOOP THROUGH ALL TRUCKS AND CREATE HOLDERS FOR EACH ------
+        
         var oneTruck = this.props.data.map(function(truck){
+            
+            var truckProfileID = truck._id;
+            
+            
+            
+            // ----- LOOP THROUGH CUISINE OPTS & DISPLAY THEM -----
+            
             var cuisineLoop = truck.cuisine.map(function(cuisine){
               return(
                 <div>
@@ -65,66 +75,120 @@ var TruckList = React.createClass({
                 </div>
                 )
             });
-            var truckProfileID = truck._id;
+            
+            
+            
+            // ----- INDIVIDUAL ELEMENTS STORED AS VARIABLES -----
+            
+            var openSign = function(){
+                return(
+                    <div>
+                        <img src="img/openSign.png" className="hidden-xs hidden-sm hidden-md truckList-open-lg"/>
+                        <img src="img/openSign.png" className="hidden-xs hidden-sm hidden-lg truckList-open-md"/>
+                        <img src="img/openSign.png" className="hidden-md hidden-lg truckList-open-xs"/>
+                    </div>
+                )
+            };
+             
+            var learnMoreBtns = function() {
+                return(
+                    <div>
+                        <button onClick={self.props.toggleProfileID.bind(this, truckProfileID)} className="btn btn-warning ghost-list-button center-block hidden-sm hidden-xs truckList-learn-md">Learn More</button>
+                        <button onClick={self.props.toggleProfileID.bind(this, truckProfileID)} className="btn btn-warning ghost-list-button center-block hidden-xs hidden-md hidden-lg">Learn<br></br> More</button>
+                        <button onClick={self.props.toggleProfileID.bind(this, truckProfileID)} className="btn btn-warning ghost-list-button center-block hidden-sm hidden-md hidden-lg">Learn More</button>  
+                    </div>
+                )
+            };
+                                           
+                                           
+            var socialBtnsLG = function() {
+                return(
+                    <div>
+                      <div className="col-sm-6">
+                        <a href={truck.facebook}><button className="btn btn-warning ghost-list-button center-block truckList-social-responsive">
+                          <i className="fa fa-facebook"></i>
+                        </button></a>
+                      </div>
 
+                      <div className="col-sm-6">
+                        <a href={truck.twitter}><button className="btn btn-warning ghost-list-button center-block truckList-social-responsive">
+                          <i className="fa fa-twitter"></i>
+                        </button></a>
+                      </div>
+                    </div>
+                )
+            };
+        
+            var socialBtnsSM = function() {
+                return(
+                    <div>
+                      <div className="col-xs-3">
+                        <a href={truck.facebook}><button className="btn btn-warning ghost-list-button center-block">
+                          <i className="fa fa-facebook"></i>
+                        </button></a>
+                      </div>
+                      <div className="col-xs-3">
+                        <a href={truck.twitter}><button className="btn btn-warning ghost-list-button center-block">
+                          <i className="fa fa-twitter"></i>
+                        </button></a>
+                      </div>
+                    </div>
+                )
+            };
+        
+        
+        
+        // ----- RENDER ONE TRUCK HOLDER -----
+        
             return (
                 <div>
                     <div className="well clearfix">
+                
                       <div className="col-sm-9 hidden-xs">
                         <h2>{truck.truckName}</h2><br></br>
                         <div className="row">
-                            <div>{cuisineLoop}</div>
+                            {cuisineLoop}
                         </div>
                       </div>
+                
                       <div className="col-sm-3 hidden-xs">
-                        <img src="img/openSign.png" className="hidden-md truckList-open-lg"/>
-                        <img src="img/openSign.png" className="hidden-sm hidden-lg truckList-open-md"/>
-                        <button onClick={self.props.toggleProfileID.bind(this, truckProfileID)} className="btn btn-warning ghost-list-button center-block hidden-sm hidden-xs truckList-learn-md">Learn More</button>
-                        <button onClick={self.props.toggleProfileID.bind(this, truckProfileID)} className="btn btn-warning ghost-list-button center-block hidden-md hidden-lg">Learn<br></br> More</button>
+                        {openSign()}
+                        {learnMoreBtns()}
+                
                         <div className="row">
-                          <div className="col-sm-6">
-                            <a href={truck.facebook}><button className="btn btn-warning ghost-list-button center-block truckList-social-responsive">
-                              <i className="fa fa-facebook"></i>
-                            </button></a>
-                          </div>
-                          <div className="col-sm-6">
-                            <a href={truck.twitter}><button className="btn btn-warning ghost-list-button center-block truckList-social-responsive">
-                              <i className="fa fa-twitter"></i>
-                            </button></a>
-                          </div>
+                            {socialBtnsLG()}
                         </div>
                       </div>
-
             
                       <div className="col-xs-12 hidden-sm hidden-md hidden-lg">
-                        <img src="img/openSign.png" className="hidden-sm truckList-open-xs"/>
+                        {openSign()}
+                        
                         <h2>{truck.truckName}</h2><br></br>
+                            
                         <div className="row">
                                 <div>{cuisineLoop}</div>
                         </div>
-                        </div>
+                        
+                      </div>
+                        
                       <div className="col-xs-12 hidden-sm hidden-md hidden-lg">
                         <div className="row">
                           <div className="col-xs-6">
-                            <button onClick={self.props.toggleProfileID.bind(this, truckProfileID)} className="btn btn-warning ghost-list-button center-block">Learn More</button>
+                            {learnMoreBtns()}
                           </div>  
-                          <div className="col-xs-3">
-                            <a href={truck.facebook}><button className="btn btn-warning ghost-list-button center-block">
-                              <i className="fa fa-facebook"></i>
-                            </button></a>
-                          </div>
-                          <div className="col-xs-3">
-                            <a href={truck.twitter}><button className="btn btn-warning ghost-list-button center-block">
-                              <i className="fa fa-twitter"></i>
-                            </button></a>
-                          </div>
+                          {socialBtnsSM()}
                         </div>
                       </div>
+                          
                     </div>
                 </div>
             )
         });
-        
+    
+
+
+    // ----- RENDER ALL OF THE TRUCK HOLDERS
+    
         return (
                 <div>
                     {oneTruck}
@@ -135,20 +199,31 @@ var TruckList = React.createClass({
 
 var TruckListHolder = React.createClass({
   render: function(){
+      
+    var self = this;  
+      
+    var backBtn = function(){
+        return(
+            <div className="col-xs-3 col-md-2 col-lg-1" id="list-back-button">
+                  <button className="btn btn-warning ghost center-block back-button-sm" onClick={self.props.showCatClick}><i className="fa fa-chevron-left"/></button>
+            </div> 
+        )
+    };  
+      
     return (
         <div>
-        <div className="row">
-            <div className="col-xs-3 col-md-2 col-lg-1" id="list-back-button">
-                  <button className="btn btn-warning ghost center-block back-button-sm" onClick={this.props.showCatClick}><i className="fa fa-chevron-left"/></button>
-              </div> 
-        </div>
-        <div className="col-lg-6 col-md-12">
-          <TruckList data={this.props.data} toggleTruckList={this.props.toggleTruckList} toggleProfileID={this.props.toggleProfileID}/>
-        </div>
+            <div className="row">
+                {backBtn()}
+            </div>
+
+            <div className="col-lg-6 col-md-12">
+              <TruckList data={this.props.data} toggleProfileID={this.props.toggleProfileID}/>
+            </div>
         </div>
       )
   }
 });
+
 
 
 // THIS RENDERS EVERYTHING
