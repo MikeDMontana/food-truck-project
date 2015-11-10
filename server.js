@@ -32,7 +32,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 if (process.env.NODE_ENV === 'production') {
-  console.log('Running in production mode');
+  console.log('*****************-----------------------Running in production mode---------------------**************************');
 
   app.use('/static', express.static('static'));
   } else {
@@ -75,7 +75,7 @@ app.get('/', function(req, res) {
   res.render('index');
 });
 
-app.use('/html', express.static('html'));
+// app.use('/html', express.static('html'));
 
 
 //Passport
