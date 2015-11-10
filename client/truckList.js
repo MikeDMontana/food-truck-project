@@ -1,6 +1,7 @@
 var React = require('react');
 var TruckProfileBox = require('./truckProfile');
-var GoogleMap = require('./map')
+var GoogleMap = require('./map');
+
 
 
 

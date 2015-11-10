@@ -1,70 +1,11 @@
 import React from 'react';
 import {Gmaps, Marker, InfoWindow, Circle} from 'react-gmaps';
+var mapStyles = require('./mapstyles');
 
 const coords = {
   lat: 46.869554,
   lng: -113.997356
 };
-
-var mapStyles = [
-  {
-    stylers: [
-      { hue: "#D15D39" },
-      { saturation: -20 }
-    ]
-  },{
-    featureType: "road",
-    elementType: "geometry",
-    stylers: [
-      { lightness: 100 },
-      { visibility: "simplified" }
-    ]
-  },{
-    featureType: "road",
-    elementType: "labels",
-    stylers: [
-      { visibility: "on" }
-    ]},
-{
-    "featureType": "poi.park",
-    "stylers": [
-      { "visibility": "on" }
-    ]
-  },{
-    "featureType": "poi.attraction",
-    "stylers": [
-      { "visibility": "off" }
-    ]
-  },{
-    "featureType": "poi.business",
-    "stylers": [
-      { "visibility": "off" }
-    ]
-  },{
-    "featureType": "poi.government",
-    "stylers": [
-      { "visibility": "off" }
-    ]
-  },{
-    "featureType": "poi.medical",
-    "stylers": [
-      { "visibility": "off" }
-    ]
-  },{
-    "featureType": "poi.place_of_worship",
-    "stylers": [
-      { "visibility": "off" }
-    ]
-  },{
-    "featureType": "poi",
-    "elementType": "labels.icon",
-    "stylers": [
-      { "visibility": "off" }
-    ]
-  },{
-  }
-
-];
 
 const GoogleMap = React.createClass({
 
