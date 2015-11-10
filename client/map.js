@@ -129,15 +129,24 @@ const GoogleMap = React.createClass({
 
     
   render() {
+    var self = this;
     var pinLoop = this.props.data.map(function(truck){
         return(
             <Marker
               lat={truck.lat}
               lng={truck.lon}
+              clickable={true}
               draggable={false}
               icon={'../img/logo_notext_sm.png'}
-              onDragEnd={truck.onDragEnd} />
-            
+              title={truck.truckName}
+              animation={"BOUNCE"}
+              onClick={function(e){
+                    var infowindow = new google.maps.InfoWindow({
+                                        content: truck.truckName,
+                                        position: e.latLng
+                                    });
+                    infowindow.open(this.get('map'), this);
+              }} />
           )
       });
       
@@ -153,7 +162,6 @@ const GoogleMap = React.createClass({
         onMapCreated={this.onMapCreated}>
         
         {pinLoop}
-
     
 
       </Gmaps>
