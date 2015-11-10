@@ -69,10 +69,14 @@ var config = require('./server/config');
 
 var truckRoutes = require('./routes/routes');
 
+var static_path = path.join(__dirname, '/');
+
 app.use('/api', truckRoutes);
 
 app.get('/', function(req, res) {
-  res.render('index');
+  res.render('index', {
+      root: static_path
+  });
 });
 
 // app.use('/html', express.static('html'));
@@ -103,11 +107,15 @@ require('./routes/userroutes.js')(app, passport);
 var port = process.env.PORT || 4000;
 var hostname = config.HOSTNAME;
 
-app.listen(port, function(err) {
-  if (err) {
-    console.log(err);
-    return;
-  }
+app.use(express.static(static_path))
+  .get('/', function (req, res) {
+      res.render('index', {
+          root: static_path
+      });
+  }).listen(process.env.PORT || 4000, function (err) {
+      if (err) {
+        console.log(err);
+        return;
+      }
   console.log('The magic happens at ' + ':' + port);
 });
-
