@@ -9,12 +9,70 @@ var HomeBody = React.createClass({
        return (
                 <div>
 					<section>
-					  <div className="my-header">
+					  <div className="my-header-md hidden-sm hidden-xs">
 					    <div className="container-fluid vertical-center" id="btn-container">
 					    <div className="container" id="btn-row">
 					      <div className="row">
 					        <div className="col-md-12 text-center">
 					          <h1 className="white">Go Truck Yourself.</h1>
+					        </div>
+					      </div>
+					      <div className="row">
+					        <div className="col-md-3 hidden-sm hidden-xs">
+					          <button className="btn btn-warning ghost center-block" onClick={this.props.toggleCat.bind(this, "all")}>
+					            <h3>ALL TRUCKS.</h3>
+					          </button>
+					        </div>
+					        <div className="col-sm-12 hidden-md hidden-lg">
+					          <button className="btn btn-warning ghost center-block resp-padded" onClick={this.props.toggleCat.bind(this, "all")}>
+					            <h2>ALL TRUCKS.</h2>
+					          </button>
+					        </div>
+					        <div className="col-md-3 hidden-sm hidden-xs">
+					          <button className="btn btn-warning ghost center-block" onClick={this.props.toggleCat.bind(this, "lunch")}>
+					            <h3>LUNCH.</h3>
+					          </button>
+					        </div>
+					        <div className="col-sm-12 hidden-md hidden-lg">
+					          <button className="btn btn-warning ghost center-block resp-padded" onClick={this.props.toggleCat.bind(this, "lunch")}>
+					            <h2>LUNCH.</h2>
+					          </button>
+					        </div>
+
+					        <div className="col-md-3 hidden-sm hidden-xs">
+					          <button className="btn btn-warning ghost center-block"  onClick={this.props.toggleCat.bind(this, "dinner")}>
+					            <h3>DINNER.</h3>
+					          </button>
+					        </div>
+					        <div className="col-sm-12 hidden-md hidden-lg">
+					          <button className="btn btn-warning ghost center-block resp-padded" onClick={this.props.toggleCat.bind(this, "dinner")}>
+					            <h2>DINNER.</h2>
+					          </button>
+					        </div>
+
+					        <div className="col-md-3 hidden-sm hidden-xs">
+					          <button className="btn btn-warning ghost center-block" onClick={this.props.toggleCat.bind(this, "other")}>
+					            <h3>OTHER.</h3>
+					          </button>
+					        </div>
+					        <div className="col-sm-12 hidden-md hidden-lg">
+					          <button className="btn btn-warning ghost center-block resp-padded" onClick={this.props.toggleCat.bind(this, "other")}>
+					            <h2>OTHER.</h2>
+					          </button>
+					        </div>
+					      </div>
+					      </div>
+					    </div>
+					  </div>
+					</section>
+                              
+                    <section>
+					  <div className="my-header-sm hidden-md hidden-lg">
+					    <div className="container-fluid vertical-center" id="btn-container">
+					    <div className="container" id="btn-row">
+					      <div className="row">
+					        <div className="col-md-12 text-center">
+					          <h2 className="white">Go Truck Yourself.</h2>
 					        </div>
 					      </div>
 					      <div className="row">

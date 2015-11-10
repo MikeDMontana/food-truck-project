@@ -1,4 +1,15 @@
-.my-header{
+.my-header-sm{
+	background-image: url(../img/background.jpg);
+	background-position: center;
+	width: 100%;
+	position: absolute;
+	background-size: cover;
+	background-repeat: no-repeat;
+    height: 100%;
+    margin-top: -40px;
+}
+
+.my-header-md{
 	background-image: url(../img/background.jpg);
 	background-position: center;
 	width: 100%;
@@ -103,10 +114,6 @@
     margin-bottom: 10px;
 }
 
-#toggle-button-sm{
-    margin-top: 6% !important;
-}
-
 .row-spacing {
     margin-top: 50px; 
     margin-bottom: 50px
@@ -116,6 +123,9 @@
     margin-top: 0px;
 }
 
+.h2, h2 {
+    font-size: 28px !important;
+}
 
 
 
@@ -452,6 +462,10 @@ h3.white {
 
 /*NAV BAR STUFF*/
 
+#toggle-button-sm{
+    margin-top: 30px !important;
+}
+
 .fixed-nav {
     position: fixed;
     width: 100%;
@@ -461,8 +475,20 @@ h3.white {
 	margin-left: 75px;
 }
 
-.navbar{
+.navbar-lg {
+	min-height: 126px !important;
+}
+
+.navbar-md {
 	min-height: 125px !important;
+}
+
+.navbar-sm {
+    min-height: 122px !important;
+}
+
+.navbar-xs {
+	min-height: 90px !important;
 }
 
 .navbar-inverse{
@@ -473,7 +499,7 @@ h3.white {
 .navbar-inverse .navbar-toggle{
     background-color: #d15d39 !important;
     border-color: #fff;
-    margin-top: 3%;
+    margin-top: 45px;
 
 }
 
@@ -482,14 +508,24 @@ h3.white {
     color: #d15d39;
     font-size: 50px;
     padding: 0px;
-    margin-top: 5%;
+    line-height: 1;
 }
 #brand-text-sm{
     font-family: 'Lobster', cursive;
     color: #d15d39;
     font-size: 35px;
     padding: 0px;
-    margin-top: 5%;
+    line-height: 1;
+}
+
+#brand-text-xs{
+    font-family: 'Lobster', cursive;
+    color: #d15d39;
+    font-size: 32px;
+    margin-left: -15px;
+    padding-left: 0px;
+    line-height: 1.35;
+
 }
 
 @media (max-width: 4000px) {
@@ -536,15 +572,19 @@ h3.white {
 }
 
 .navbar-flyout-lg{
-    top: 4vh;
+    top: 29px;
 }
 
 .navbar-flyout-md{
-    top: 5vh;
+    top: 25px;
 }
 
 .navbar-flyout-sm {
     top: 40px;
+}
+
+.navbar-flyout-xs {
+    top: 10px;
 }
 
 .navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus, .navbar-inverse .navbar-nav>.active>a:hover {
