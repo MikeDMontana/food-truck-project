@@ -35,7 +35,7 @@ if (process.env.NODE_ENV === 'production') {
   console.log('Running in production mode');
 
   app.use('/static', express.static('static'));
-} else {
+  } else {
   // When not in production, enable hot reloading
 
   var chokidar = require('chokidar');
@@ -76,7 +76,7 @@ app.get('/', function(req, res) {
 });
 
 app.use('/html', express.static('html'));
-app.use('/static', express.static('static'));
+
 
 //Passport
 
@@ -100,7 +100,7 @@ require('./routes/userroutes.js')(app, passport);
 
 
 // Start the webserver
-var port = process.env.PORT;
+var port = process.env.PORT || 4000;
 var hostname = config.HOSTNAME;
 
 app.listen(port, function(err) {
