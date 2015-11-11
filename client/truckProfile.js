@@ -33,6 +33,8 @@ var TruckProfileLg = React.createClass({
     
     render: function() {
         
+      var self = this;    
+        
       var categoryLoop = this.props.data.timeCategory.map(function(truck){
         if (truck != "all"){
             return(
@@ -49,11 +51,32 @@ var TruckProfileLg = React.createClass({
           )
       });
 
-      var optionsLoop = this.props.data.foodOptions.map(function(truck){
-        return(
-          <img src={truck}></img>
-          )
-      });
+        var foodOptions = function(){
+            var emptyArray = [];
+            
+              var optionsLoop = self.props.data.foodOptions.map(function(truck){
+                if (truck != []) {
+                    return(
+                        <img src={truck}></img>
+                    )
+                } else {
+                    return
+                }
+              });
+            
+            if (self.props.data.foodOptions[0] != null){
+                console.log(self.props.data.foodOptions);
+                return (
+                    <div>
+                    <h3 className="white">Food Options</h3>
+                    {optionsLoop}
+                    </div>
+                )
+            } else {
+                console.log("hello world")
+                return
+            }
+        };
 
       var moneyIcon = "fa fa-money"; 
 
@@ -122,8 +145,7 @@ var TruckProfileLg = React.createClass({
         <div className="col-lg-3 col-lg-offset-1">
           <h3 className="white">Cuisine</h3>
           <div>{cuisineLoop}</div>
-          <h3 className="white">Food Options</h3>
-            <div>{optionsLoop}</div>
+          <div>{foodOptions()}</div>
         </div>
       </div>
       <div className="row row-spacing">
@@ -218,6 +240,8 @@ var TruckProfileMd = React.createClass({
   },
     
     render: function() {
+        
+     var self = this;
 
       var categoryLoop = this.props.data.timeCategory.map(function(truck){
           
@@ -239,12 +263,33 @@ var TruckProfileMd = React.createClass({
           )
       });
 
-      var optionsLoop = this.props.data.foodOptions.map(function(truck){
-        return(
-          <img src={truck}></img>
-          )
-      });
-
+        var foodOptions = function(){
+            var emptyArray = [];
+            
+              var optionsLoop = self.props.data.foodOptions.map(function(truck){
+                if (truck != []) {
+                    return(
+                        <img src={truck}></img>
+                    )
+                } else {
+                    return
+                }
+              });
+            
+            if (self.props.data.foodOptions[0] != null){
+                console.log(self.props.data.foodOptions);
+                return (
+                    <div>
+                    <h3 className="white">Food Options</h3>
+                    {optionsLoop}
+                    </div>
+                )
+            } else {
+                console.log("hello world")
+                return
+            }
+        };
+        
       var moneyIcon = "fa fa-money";
 
       var paymentLoop = this.props.data.payment.map(function(truck){
@@ -317,8 +362,7 @@ var TruckProfileMd = React.createClass({
             <div className="row">
               <div>{cuisineLoop}</div>
             </div>
-          <h3 className="white">Food Options</h3>
-            <div>{optionsLoop}</div>
+            {foodOptions()}
         </div>
       </div>
       <div className="row vertical-center truckPage-vh-50">
@@ -412,6 +456,8 @@ var TruckProfileSm = React.createClass({
   },
     
     render: function() {
+        
+      var self = this;
 
       var categoryLoop = this.props.data.timeCategory.map(function(truck){
         if (truck != "all"){
@@ -430,14 +476,37 @@ var TruckProfileSm = React.createClass({
           </div>
           )
       });
-
-      var optionsLoop = this.props.data.foodOptions.map(function(truck){
-        return(
-          <div className="col-sm-4 truckPage-opt-sm">
-          <img src={truck}></img>
-          </div>
-          )
-      });
+        
+        var foodOptions = function(){
+            
+              var optionsLoop = self.props.data.foodOptions.map(function(truck){
+                if (truck != []) {
+                    return(
+                      <div className="col-sm-4 truckPage-opt-sm">
+                      <img src={truck}></img>
+                      </div>
+                    )
+                } else {
+                    return
+                }
+              });
+            
+            if (self.props.data.foodOptions[0] != null){
+                console.log(self.props.data.foodOptions);
+                return (
+                    <div>
+                    <h3 className="white">Food Options</h3>
+                    <div className="row">
+                        {optionsLoop}
+                    </div>
+                    </div>
+                )
+            } else {
+                console.log("hello world")
+                return
+            }
+        };
+        
 
       var moneyIcon = "fa fa-money";
       var checkIcon = "./img/checkbook.png";
@@ -515,10 +584,7 @@ var TruckProfileSm = React.createClass({
             <div className="row">
               <div>{cuisineLoop}</div>
             </div>
-          <h3 className="white">Food Options</h3>
-            <div className="row">
-                <div>{optionsLoop}</div>
-            </div>
+            {foodOptions()}
         </div>
       </div>
       <div className="row vertical-center truckPage-vh-40">
@@ -614,6 +680,8 @@ var TruckProfileXs = React.createClass({
   },
     
     render: function() {
+        
+      var self = this;
 
       var categoryLoop = this.props.data.timeCategory.map(function(truck){
         if (truck != "all"){
@@ -632,14 +700,63 @@ var TruckProfileXs = React.createClass({
           <div className="well well-orange-cuisine text-center truckPage-cuisine-xs">{truck}</div>
           )
       });
-
-      var optionsLoop = this.props.data.foodOptions.map(function(truck){
-        return(
-          <div className="col-xs-4 truckPage-opt-sm">
-            <img src={truck} className="img-responsive"></img>
-          </div>
-          )
-      });
+        
+        var foodOptions = function(){
+            
+              var optionsLoop = self.props.data.foodOptions.map(function(truck){
+                if (truck != []) {
+                    return(
+                      <div className="col-xs-4 truckPage-opt-sm">
+                        <img src={truck} className="img-responsive"></img>
+                      </div>
+                    )
+                } else {
+                    return
+                }
+              });
+            
+            if (self.props.data.foodOptions[0] != null){
+                return (
+                    <div>
+                      <div className="row vertical-center truckPage-vh-10">
+                          <div className="col-xs-6">
+                              <h3 className="white text-center">Cuisine</h3>
+                          </div>
+                          <div className="col-xs-6">
+                              <h3 className="white text-center">Food Opt.</h3>
+                          </div>
+                      </div> 
+                    
+                      <div className="row vertical-center truckPage-vh-10">
+                          <div className="col-xs-6">
+                            <div>{cuisineLoop}</div>
+                          </div>
+                          <div className="col-xs-6">
+                            <div className="row">
+                                <div>{optionsLoop}</div>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                )
+            } else {
+                return(
+                    <div>
+                        <div className="row vertical-center truckPage-vh-10">
+                          <div className="col-xs-12">
+                              <h3 className="white text-center">Cuisine</h3>
+                          </div>
+                        </div>
+                    
+                        <div className="row vertical-center truckPage-vh-10">
+                          <div className="col-xs-6">
+                            <div>{cuisineLoop}</div>
+                          </div>
+                        </div>
+                    </div>
+                )
+            }
+        };
 
       var moneyIcon = "fa fa-money";
 
@@ -703,29 +820,11 @@ var TruckProfileXs = React.createClass({
       <div className="row">
         <div className="col-sm-11 col-sm-offset-1 truckPage-spacer-sm">
           <h3 className="white text-center">Info</h3>
-          <p className="white">{this.props.data.description}</p>
+          <p className="white text-center">{this.props.data.description}</p>
         </div>
       </div>
 
-      <div className="row vertical-center truckPage-vh-10">
-          <div className="col-xs-6">
-              <h3 className="white text-center">Cuisine</h3>
-          </div>
-          <div className="col-xs-6">
-              <h3 className="white text-center">Food Opt.</h3>
-          </div>
-      </div>      
-            
-      <div className="row vertical-center truckPage-vh-10">
-          <div className="col-xs-6">
-            <div>{cuisineLoop}</div>
-          </div>
-          <div className="col-xs-6">
-            <div className="row">
-                <div>{optionsLoop}</div>
-            </div>
-          </div>
-        </div>
+    {foodOptions()}
             
     <div className="row truckPage-vh-10">
             <div className="col-xs-12 center-block">
