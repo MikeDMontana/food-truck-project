@@ -306,7 +306,7 @@
 
 .profile-title {
     margin-top: 5px;
-    font-size: 66px;
+    font-size: 66px !important;
     color: #FFF;
     margin-bottom: 0px;
 }

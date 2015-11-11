@@ -34,9 +34,13 @@ var TruckProfileLg = React.createClass({
     render: function() {
         
       var categoryLoop = this.props.data.timeCategory.map(function(truck){
-        return(
-          <div className="col-lg-1 well well-orange text-center">{truck}</div>
-          )
+        if (truck != "all"){
+            return(
+              <div className="col-lg-1 well well-orange text-center">{truck}</div>
+              )
+        } else {
+            return
+        }
       });
 
       var cuisineLoop = this.props.data.cuisine.map(function(truck){
@@ -98,16 +102,13 @@ var TruckProfileLg = React.createClass({
             <img className="img-responsive thumbnail" src={imgg + media}/>
             </a>
           </div>
-          <div className="col-lg-7 truckPage-vert-push-sm">
+          <div className="col-lg-9 truckPage-vert-push-sm">
             <h1 className="profile-title">{this.props.data.truckName}</h1><br></br>
             <h5 className="profile-city">{this.props.data.city}</h5>
             <div className="row truckPage-left-spacer-sm">
               <div>{categoryLoop}</div>
             </div>
           </div>
-          <div className="col-lg-2">
-            <button className="btn btn-warning ghost center-block back-button-lg" onClick={this.props.toggleTruckList}><h3>Back</h3></button>
-          </div> 
         </div>
       <div className="row">
         <div className="col-lg-3 col-lg-offset-1">
@@ -219,9 +220,15 @@ var TruckProfileMd = React.createClass({
     render: function() {
 
       var categoryLoop = this.props.data.timeCategory.map(function(truck){
-        return(
+          
+        if (truck != "all"){
+            return(
             <div className="well well-orange text-center truckPage-stacking-cat-md">{truck}</div>
           )
+        } else {
+            return
+        }
+          
       });
 
       var cuisineLoop = this.props.data.cuisine.map(function(truck){
@@ -286,16 +293,13 @@ var TruckProfileMd = React.createClass({
                 </a>
               </div>
 
-              <div className="col-md-5 truckPage-vert-push-sm">
+              <div className="col-md-7 truckPage-vert-push-sm">
                 <h2 className="profile-title">{this.props.data.truckName}</h2><br></br>
                 <h5 className="profile-city">{this.props.data.city}</h5>  
               </div>    
               <div className="col-md-2">
                   <div>{categoryLoop}</div>
               </div>
-              <div className="col-md-2">
-            <button className="btn btn-warning ghost center-block back-button-lg" onClick={this.props.toggleTruckList}><h3>Back</h3></button>
-          </div> 
           </div>
             
       <div className="row">
@@ -410,9 +414,13 @@ var TruckProfileSm = React.createClass({
     render: function() {
 
       var categoryLoop = this.props.data.timeCategory.map(function(truck){
-        return(
-          <div className="well well-orange text-center truckPage-stacking-cat-sm">{truck}</div>
+        if (truck != "all"){
+            return(
+            <div className="well well-orange text-center truckPage-stacking-cat-sm">{truck}</div>
           )
+        } else {
+            return
+        }
       });
 
       var cuisineLoop = this.props.data.cuisine.map(function(truck){
@@ -480,7 +488,7 @@ var TruckProfileSm = React.createClass({
               </a>              
               </div>
 
-              <div className="col-sm-5 truckPage-vert-push-sm">
+              <div className="col-sm-7 truckPage-vert-push-sm">
                 <h1 className="profile-title-sm">{this.props.data.truckName}</h1><br></br>
                 <h5 className="profile-city-sm">{this.props.data.city}</h5>  
               </div>    
@@ -488,9 +496,6 @@ var TruckProfileSm = React.createClass({
               <div className="col-sm-2">
                   <div className="stacking-cat-sm">{categoryLoop}</div>
               </div>
-              <div className="col-sm-2">
-                  <button className="btn btn-warning ghost center-block back-button-sm" onClick={this.props.toggleTruckList}><h3>Back</h3></button>
-              </div> 
           </div>
             
       <div className="row">
@@ -611,11 +616,15 @@ var TruckProfileXs = React.createClass({
     render: function() {
 
       var categoryLoop = this.props.data.timeCategory.map(function(truck){
-        return(
-          <div className="col-xs-4">
-            <div className="well well-orange text-center truckPage-horiz-cat-sm">{truck}</div>
-          </div>
+        if (truck != "all"){
+            return(
+            <div className="col-xs-4">
+                <div className="well well-orange text-center truckPage-horiz-cat-sm">{truck}</div>
+            </div>
           )
+        } else {
+            return
+        }
       });
 
       var cuisineLoop = this.props.data.cuisine.map(function(truck){
@@ -674,11 +683,6 @@ var TruckProfileXs = React.createClass({
         return (
         <div>
         <div className='hidden-sm hidden-md hidden-lg'>
-          <div className="row">
-                <div className="col-xs-3">
-                  <button className="btn btn-warning ghost center-block back-button-sm" onClick={this.props.toggleTruckList}><i className="fa fa-chevron-left"/></button>
-              </div> 
-          </div>
           <div className="row">
               <div className="col-sm-3">
                 <a href={this.props.data.image[0]}>
@@ -798,8 +802,22 @@ var TruckProfileXs = React.createClass({
 
 var TruckProfileBox = React.createClass({
     render: function() {
+        
+        var self = this;
+        
+        var backBtn = function(){
+            return(
+                <div className="col-xs-3 col-md-2 col-lg-1" id="list-back-button">
+                      <button className="btn btn-warning ghost center-block back-button-sm" onClick={self.props.toggleTruckList}><i className="fa fa-chevron-left"/></button>
+                </div> 
+            )
+        };  
+        
         return (
             <div>
+                <div className="row">
+                    {backBtn()}
+                </div>
                 <TruckProfileLg data={this.props.data} toggleTruckList={this.props.toggleTruckList}/>
                 <TruckProfileMd data={this.props.data} toggleTruckList={this.props.toggleTruckList}/>
                 <TruckProfileSm data={this.props.data} toggleTruckList={this.props.toggleTruckList}/>
