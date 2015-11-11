@@ -180,9 +180,9 @@ var TruckEntryForm = React.createClass({
                               </div>
                               <div className="col-md-4">
                                 <label>Payment Options:</label><br/>
-                                <input type="checkbox" name="payment[]" ref="payment" value="fa fa-money"/>Cash<br/>
-                                <input type="checkbox" name="payment[]" ref="payment" value="fa fa-credit-card"/>Card<br/>
-                                <input type="checkbox" name="payment[]" ref="payment" value="./img/checkbook.png"/>Checks<br/>
+                                <input type="checkbox" name="payment[]" ref="payment" value="cash"/>Cash<br/>
+                                <input type="checkbox" name="payment[]" ref="payment" value="card"/>Card<br/>
+                                <input type="checkbox" name="payment[]" ref="payment" value="checks"/>Checks<br/>
                               </div>
                               <div className="col-md-4">
                                   <label>Eating preference options:</label><br/>
