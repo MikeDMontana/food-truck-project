@@ -1,4 +1,4 @@
-var React = require('react');
+ var React = require('react');
 
 
 // ------- NAV SIZES --------
@@ -27,8 +27,8 @@ var NavLG = React.createClass({
                   <div className="navbar-collapse collapse navbar-flyout-lg">
                     <ul className="nav navbar-nav">
                       <li className="active"><a href="/">Home</a></li>
-                      <li><a href="#about">About</a></li>
-                      <li><a href="#contact">Contact</a></li>
+                      <li><a href="/about">About</a></li>
+                      <li><a href="/contact">Contact</a></li>
                       <li><a href="/login">Add A Truck!</a></li>
                     </ul>
                   </div>
@@ -62,8 +62,8 @@ var NavMD = React.createClass({
                   <div className="navbar-collapse collapse navbar-flyout-md">
                     <ul className="nav navbar-nav">
                       <li className="active"><a href="/">Home</a></li>
-                      <li><a href="#about">About</a></li>
-                      <li><a href="#contact">Contact</a></li>
+                      <li><a href="/about">About</a></li>
+                      <li><a href="/contact">Contact</a></li>
                       <li><a href="/login">Add A Truck!</a></li>
                     </ul>
                   </div>
@@ -97,8 +97,8 @@ var NavSM = React.createClass({
                   <div className="navbar-collapse collapse navbar-flyout-md">
                     <ul className="nav navbar-nav">
                       <li className="active"><a href="/">Home</a></li>
-                      <li><a href="#about">About</a></li>
-                      <li><a href="#contact">Contact</a></li>
+                      <li><a href="/about">About</a></li>
+                      <li><a href="/contact">Contact</a></li>
                       <li><a href="/login">Add A Truck!</a></li>
                     </ul>
                   </div>
@@ -132,8 +132,8 @@ var NavXS = React.createClass({
                   <div className="navbar-collapse collapse navbar-flyout-xs">
                     <ul className="nav navbar-nav">
                       <li className="active"><a href="/">Home</a></li>
-                      <li><a href="#about">About</a></li>
-                        <li><a href="#contact">Contact</a></li>
+                      <li><a href="/about">About</a></li>
+                        <li><a href="/contact">Contact</a></li>
                       <li><a href="/login">Add A Truck!</a></li>
                     </ul>
                   </div>

@@ -47,6 +47,16 @@ module.exports = function(app, passport) {
         req.logout();
         res.redirect('/');
     });
+
+    // show the about page
+    app.get('/about', function(req, res) {
+        res.render('about.ejs');
+    });
+
+    // show the about page
+    app.get('/contact', function(req, res) {
+        res.render('contact.ejs');
+    });
 };
 
 
