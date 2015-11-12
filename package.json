@@ -38,7 +38,7 @@
     "mongodb-uri": "^0.9.7",
     "mongoose": "^4.1.11",
     "react-gmaps": "^1.0.4",
-    "react": "^0.13.0",
+    "react": "^0.14.2",
     "superagent": "^1.4.0",
     "axios": "^0.5.4",
     "babel-loader": "^5.1.2",
