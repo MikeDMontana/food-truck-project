@@ -4,7 +4,7 @@ var webpack = require('webpack');
 module.exports = {
   devtool: 'source-map',
   entry: {bundle:
-    './client/index', form: './client/truckEntry'},
+    './client/index', form: './client/truckEntry', aboutBundle: './client/about', contactBundle: './client/contact'},
   output: {
     path: path.join(__dirname, 'static'),
     filename: '[name].js',

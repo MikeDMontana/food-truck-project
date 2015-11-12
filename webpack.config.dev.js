@@ -7,7 +7,10 @@ module.exports = {
     'webpack-hot-middleware/client',
     './client/index'
   ], form: ['webpack-hot-middleware/client',
-    './client/truckEntry']},
+    './client/truckEntry'
+    ], aboutBundle: ['webpack-hot-middleware/client', './client/about'
+    ], contactBundle: ['webpack-hot-middleware/client', './client/contact']
+  },
   output: {
     path: path.join(__dirname, 'static'),
     filename: '[name].js',

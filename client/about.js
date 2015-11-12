@@ -1,5 +1,5 @@
 var React = require('react');
-var NavBar = require('navbar.js');
+var NavBar = require('./navbar');
 
 var About = React.createClass({
 
@@ -70,9 +70,9 @@ var AboutBox = React.createClass({
   render: function(){
    return(
     <div>
-    <NavBar/>
-    <div id="main-spacer"></div>
-    {About}
+      <NavBar/>
+      <div id="main-spacer"></div>
+      <About/>
     </div>
     );
  }
