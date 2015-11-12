@@ -49,6 +49,7 @@
     "passport": "^0.3.0",
     "passport-local": "^1.0.0",
     "react": "^0.14.2",
+    "react-dom": "^0.14.2",
     "react-gmaps": "^1.0.4",
     "react-tap-event-plugin": "^0.2.1",
     "superagent": "^1.4.0",
