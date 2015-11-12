@@ -1,7 +1,10 @@
 var React = require('react');
 import {Gmaps, Marker, InfoWindow, Circle} from 'react-gmaps';
-var NavBar = require('./navbar')
-var mapStyles = require('./mapstyles')
+var NavBar = require('./navbar');
+var mapStyles = require('./mapstyles');
+var HoursSelector = require('./hoursSelector');
+let injectTapEventPlugin = require("react-tap-event-plugin");
+injectTapEventPlugin();
 
 var TruckEntryForm = React.createClass({
     
@@ -213,6 +216,10 @@ var TruckEntryForm = React.createClass({
                               </div>
                             </div>
                             <br/>
+                                       
+                            <div>
+                                <HoursSelector />
+                            </div>
                             
                           <button type="submit" className="btn btn-warning">Submit</button>
                           </div>
