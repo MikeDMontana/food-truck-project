@@ -50,7 +50,7 @@ var HoursSelector = React.createClass({
                 id="time-window"
                 hintText="12hr Format"
                 onDismiss={this.onDismiss}
-                style={{ top: '120px' }}/>
+                style={{ top: '150px' }}/>
         )
     }
 });
