@@ -42,6 +42,7 @@
     "lodash": "^3.10.1",
     "material-ui": "^0.13.2",
     "method-override": "^2.3.5",
+    "moment": "^2.10.6",
     "mongo": "^0.1.0",
     "mongodb-uri": "^0.9.7",
     "mongoose": "^4.1.11",

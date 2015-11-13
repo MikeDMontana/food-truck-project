@@ -1,21 +1,29 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var TruckSchema = new Schema({
+var TruckSchema = new mongoose.Schema({
 
     truckName: String,
     city: String,
     description: String,
     image: Array,
     cuisine: Array,
-    currentLocation: String,
-    monTime: String,
-    tuesTime: String,
-    wedTime: String,
-    thurTime: String,
-    friTime: String,
-    satTime: String,
-    sunTime: String,
+    monOpen: Object,
+    tuesOpen: Object,
+    wedOpen: Object,
+    thurOpen: Object,
+    friOpen: Object,
+    satOpen: Object,
+    sunOpen: Object,
+    
+    monClose: Object,
+    tuesClose: Object,
+    wedClose: Object,
+    thurClose: Object,
+    friClose: Object,
+    satClose: Object,
+    sunClose: Object,
+    
     timeCategory: Array,
     payment: Array,
     foodOptions: Array,
