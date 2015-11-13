@@ -71,7 +71,7 @@ var truckRoutes = require('./routes/routes');
 
 var static_path = path.join(__dirname, '/');
 
-app.use('/api', truckRoutes);
+//app.use('/api', truckRoutes);
 
 app.get('/', function(req, res) {
   res.render('index', {
@@ -100,6 +100,8 @@ app.use(flash()); // use connect-flash for flash messages stored in session
 
 // routes ======================================================================
 require('./routes/userroutes.js')(app, passport);
+
+require('./routes/routes.js')(app, passport);
 
 
 

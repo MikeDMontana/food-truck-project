@@ -3,6 +3,174 @@ import {Gmaps, Marker, InfoWindow, Circle} from 'react-gmaps';
 var mapStyles = require('./mapstyles');
 
 
+var HoursLoop = React.createClass({
+    
+    render: function(){
+        
+          var self = this;
+        
+          var wrapAll = function(){
+              
+              var openDate = self.props.openDate;
+              var closeDate = self.props.closeDate;
+             
+              var openToTwelveHours = self.props.openDate.getHours();
+              var closeToTwelveHours = self.props.closeDate.getHours();
+              
+              var openMin = self.props.openDate.getMinutes();
+              var closeMin = self.props.closeDate.getMinutes();
+        
+              if (openToTwelveHours && openMin === 0 && closeMin === 0){
+                 if (openDate.getHours() >= 12){
+                      openToTwelveHours = (openToTwelveHours - 12);
+                      openMin = openMin + "0 pm";
+                  } else {
+                      openToTwelveHours = openToTwelveHours
+                      openMin = openMin + "0 am";
+                  };
+                      
+                
+                  if (closeDate.getHours() >= 12){
+                      closeToTwelveHours = (closeToTwelveHours - 12);
+                      closeMin = closeMin + "0 pm"
+                  } else {
+                      closeToTwelveHours = closeToTwelveHours;
+                      closeMin = closeMin + "0 am";
+                  };
+
+                  if (closeDate.getHours() === 0){
+                      closeToTwelveHours = 12;
+                      closeMin = openMin + " am";
+                  };
+
+                  if (openDate.getHours() === 0){
+                      openToTwelveHours = 12; 
+                      openMin = openMin + " am";
+                  };
+
+
+                  return(
+                      <div>{openToTwelveHours}:{openMin} - {closeToTwelveHours}:{closeMin}</div>
+                  )
+
+              } else if (openToTwelveHours && openMin > 0 && closeMin === 0){
+                        
+                     if (openDate.getHours() >= 12){
+                          openToTwelveHours = (openToTwelveHours - 12)
+                          openMin = openMin + " pm";
+                      } else {
+                          openToTwelveHours = openToTwelveHours;
+                              openMin = openMin + " am";
+                      };
+
+              
+                      if (closeDate.getHours() >= 12){
+                          closeToTwelveHours = (closeToTwelveHours - 12);
+                           closeMin = closeMin + "0 pm"
+                      } else {
+                          closeToTwelveHours = closeToTwelveHours;
+                          closeMin = closeMin + "0 am";
+                      };
+              
+
+                      if (closeDate.getHours() === 0){
+                          closeToTwelveHours = 12;
+                          closeMin = closeMin + "0 am";
+                      };
+
+                      if (openDate.getHours() === 0){
+                          openToTwelveHours = 12;
+                          openMin = openMin + " am";
+                      };
+
+                      return(
+                          <div>{openToTwelveHours}:{openMin} - {closeToTwelveHours}:{closeMin}</div>
+                      )
+
+              } else if (openToTwelveHours && openMin === 0 && closeMin > 0){
+                        
+                     if (openDate.getHours() >= 12){
+                          openToTwelveHours = (openToTwelveHours - 12)
+                          openMin = openMin + "0 pm";
+                      } else {
+                          openToTwelveHours = openToTwelveHours;
+                              openMin = openMin + "0 am";
+                      };
+
+              
+                      if (closeDate.getHours() >= 12){
+                          closeToTwelveHours = (closeToTwelveHours - 12);
+                           closeMin = closeMin + " pm"
+                      } else {
+                          closeToTwelveHours = closeToTwelveHours;
+                          closeMin = closeMin + " am";
+                      };
+              
+
+                      if (closeDate.getHours() === 0){
+                          closeToTwelveHours = 12;
+                          closeMin = closeMin + " am";
+                      };
+
+                      if (openDate.getHours() === 0){
+                          openToTwelveHours = 12;
+                          openMin = openMin + "0 am";
+                      };
+
+                      return(
+                          <div>{openToTwelveHours}:{openMin} - {closeToTwelveHours}:{closeMin}</div>
+                      )
+
+              } else if (openToTwelveHours && openMin > 0 && closeMin > 0){
+                        
+                     if (openDate.getHours() >= 12){
+                          openToTwelveHours = (openToTwelveHours - 12)
+                          openMin = openMin + " pm";
+                      } else {
+                          openToTwelveHours = openToTwelveHours;
+                              openMin = openMin + " am";
+                      };
+
+              
+                      if (closeDate.getHours() >= 12){
+                          closeToTwelveHours = (closeToTwelveHours - 12);
+                           closeMin = closeMin + " pm"
+                      } else {
+                          closeToTwelveHours = closeToTwelveHours;
+                          closeMin = closeMin + " am";
+                      };
+              
+
+                      if (closeDate.getHours() === 0){
+                          closeToTwelveHours = 12;
+                          closeMin = closeMin + " am";
+                      };
+
+                      if (openDate.getHours() === 0){
+                          openToTwelveHours = 12 + " am";
+                          openMin = openMin + " am";
+                      };
+
+                      return(
+                          <div>{openToTwelveHours}:{openMin} - {closeToTwelveHours}:{closeMin}</div>
+                      )
+
+              }
+              
+              else if (!openDate.getHours()){ 
+
+                return(
+                  <div>Closed</div>
+                 )
+              }
+          }
+          
+        return(
+            <div>{wrapAll()}</div>
+        )
+    }
+});
+
 var PaymentOptions = React.createClass({
   render: function() {
     var self = this;
@@ -179,6 +347,7 @@ var TruckProfileLg = React.createClass({
           )
       };
     
+    
       var profileHours = function(){
         return(
             <div>
@@ -186,31 +355,31 @@ var TruckProfileLg = React.createClass({
                 <table className="table"><h4>
                     <tr className="white">
                         <td>Monday</td>
-                        <td>{self.props.data.monTime}</td>
+                        <td><HoursLoop openDate={new Date(self.props.data.monOpen)} closeDate={new Date(self.props.data.monClose)} /></td>
                     </tr>
                     <tr className="white">
                         <td>Tuesday</td>
-                        <td>{self.props.data.tuesTime}</td>
+                        <td><HoursLoop openDate={new Date(self.props.data.tuesOpen)} closeDate={new Date(self.props.data.tuesClose)} /></td>
                     </tr>
                     <tr className="white">
                         <td>Wednesday</td>
-                        <td>{self.props.data.wedTime}</td>
+                        <td><HoursLoop openDate={new Date(self.props.data.wedOpen)} closeDate={new Date(self.props.data.wedClose)} /></td>
                     </tr>
                     <tr className="white">
                         <td>Thursday</td>
-                        <td>{self.props.data.thurTime}</td>
+                        <td><HoursLoop openDate={new Date(self.props.data.thurOpen)} closeDate={new Date(self.props.data.thurClose)} /></td>
                     </tr>
                     <tr className="white">
                         <td>Friday</td>
-                        <td>{self.props.data.friTime}</td>
+                        <td><HoursLoop openDate={new Date(self.props.data.friOpen)} closeDate={new Date(self.props.data.friClose)} /></td>
                     </tr>
                     <tr className="white">
                         <td>Saturday</td>
-                        <td>{self.props.data.satTime}</td>
+                        <td><HoursLoop openDate={new Date(self.props.data.satOpen)} closeDate={new Date(self.props.data.satClose)} /></td>
                     </tr>
                     <tr className="white">
                         <td>Sunday</td>
-                        <td>{self.props.data.sunTime}</td>
+                        <td><HoursLoop openDate={new Date(self.props.data.sunOpen)} closeDate={new Date(self.props.data.sunClose)} /></td>
                     </tr>
                 </h4></table>
             </div>
@@ -429,31 +598,31 @@ var TruckProfileMd = React.createClass({
                 <table className="table"><h4>
                     <tr className="white">
                         <td>Monday</td>
-                        <td>{self.props.data.monTime}</td>
+                        <td><HoursLoop openDate={new Date(self.props.data.monOpen)} closeDate={new Date(self.props.data.monClose)} /></td>
                     </tr>
                     <tr className="white">
                         <td>Tuesday</td>
-                        <td>{self.props.data.tuesTime}</td>
+                        <td><HoursLoop openDate={new Date(self.props.data.tuesOpen)} closeDate={new Date(self.props.data.tuesClose)} /></td>
                     </tr>
                     <tr className="white">
                         <td>Wednesday</td>
-                        <td>{self.props.data.wedTime}</td>
+                        <td><HoursLoop openDate={new Date(self.props.data.wedOpen)} closeDate={new Date(self.props.data.wedClose)} /></td>
                     </tr>
                     <tr className="white">
                         <td>Thursday</td>
-                        <td>{self.props.data.thurTime}</td>
+                        <td><HoursLoop openDate={new Date(self.props.data.thurOpen)} closeDate={new Date(self.props.data.thurClose)} /></td>
                     </tr>
                     <tr className="white">
                         <td>Friday</td>
-                        <td>{self.props.data.friTime}</td>
+                        <td><HoursLoop openDate={new Date(self.props.data.friOpen)} closeDate={new Date(self.props.data.friClose)} /></td>
                     </tr>
                     <tr className="white">
                         <td>Saturday</td>
-                        <td>{self.props.data.satTime}</td>
+                        <td><HoursLoop openDate={new Date(self.props.data.satOpen)} closeDate={new Date(self.props.data.satClose)} /></td>
                     </tr>
                     <tr className="white">
                         <td>Sunday</td>
-                        <td>{self.props.data.sunTime}</td>
+                        <td><HoursLoop openDate={new Date(self.props.data.sunOpen)} closeDate={new Date(self.props.data.sunClose)} /></td>
                     </tr>
                 </h4></table>
             </div>
@@ -677,31 +846,31 @@ var TruckProfileSm = React.createClass({
                 <table className="table"><h4>
                     <tr className="white">
                         <td>Mon</td>
-                        <td>{self.props.data.monTime}</td>
+                        <td><HoursLoop openDate={new Date(self.props.data.monOpen)} closeDate={new Date(self.props.data.monClose)} /></td>
                     </tr>
                     <tr className="white">
                         <td>Tues</td>
-                        <td>{self.props.data.tuesTime}</td>
+                        <td><HoursLoop openDate={new Date(self.props.data.tuesOpen)} closeDate={new Date(self.props.data.tuesClose)} /></td>
                     </tr>
                     <tr className="white">
                         <td>Weds</td>
-                        <td>{self.props.data.wedTime}</td>
+                        <td><HoursLoop openDate={new Date(self.props.data.wedOpen)} closeDate={new Date(self.props.data.wedClose)} /></td>
                     </tr>
                     <tr className="white">
                         <td>Thurs</td>
-                        <td>{self.props.data.thurTime}</td>
+                        <td><HoursLoop openDate={new Date(self.props.data.thurOpen)} closeDate={new Date(self.props.data.thurClose)} /></td>
                     </tr>
                     <tr className="white">
                         <td>Fri</td>
-                        <td>{self.props.data.friTime}</td>
+                        <td><HoursLoop openDate={new Date(self.props.data.friOpen)} closeDate={new Date(self.props.data.friClose)} /></td>
                     </tr>
                     <tr className="white">
                         <td>Sat</td>
-                        <td>{self.props.data.satTime}</td>
+                        <td><HoursLoop openDate={new Date(self.props.data.satOpen)} closeDate={new Date(self.props.data.satClose)} /></td>
                     </tr>
                     <tr className="white">
                         <td>Sun</td>
-                        <td>{self.props.data.sunTime}</td>
+                        <td><HoursLoop openDate={new Date(self.props.data.sunOpen)} closeDate={new Date(self.props.data.sunClose)} /></td>
                     </tr>
                 </h4></table>
             </div>
@@ -957,25 +1126,25 @@ var TruckProfileXs = React.createClass({
                 <table className="table"><h4>
                     <tr className="white">
                         <td>Mon</td>
-                        <td>{self.props.data.monTime}</td>
+                        <td><HoursLoop openDate={new Date(self.props.data.monOpen)} closeDate={new Date(self.props.data.monClose)} /></td>
                         <td>Fri</td>
-                        <td>{self.props.data.friTime}</td>
+                        <td><HoursLoop openDate={new Date(self.props.data.friOpen)} closeDate={new Date(self.props.data.friClose)} /></td>
                     </tr>
                     <tr className="white">
                         <td>Tues</td>
-                        <td>{self.props.data.tuesTime}</td>
+                        <td><HoursLoop openDate={new Date(self.props.data.tuesOpen)} closeDate={new Date(self.props.data.tuesClose)} /></td>
                         <td>Sat</td>
-                        <td>{self.props.data.satTime}</td>
+                        <td><HoursLoop openDate={new Date(self.props.data.satOpen)} closeDate={new Date(self.props.data.satClose)} /></td>
                     </tr>
                     <tr className="white">
                         <td>Weds</td>
-                        <td>{self.props.data.wedTime}</td>
+                        <td><HoursLoop openDate={new Date(self.props.data.wedOpen)} closeDate={new Date(self.props.data.wedClose)} /></td>
                         <td>Sun</td>
-                        <td>{self.props.data.sunTime}</td>
+                        <td><HoursLoop openDate={new Date(self.props.data.sunOpen)} closeDate={new Date(self.props.data.sunClose)} /></td>
                     </tr>
                     <tr className="white">
                         <td>Thurs</td>
-                        <td>{self.props.data.thurTime}</td>
+                        <td><HoursLoop openDate={new Date(self.props.data.thurOpen)} closeDate={new Date(self.props.data.thurClose)} /></td>
                         <td></td>
                         <td></td>
                     </tr>

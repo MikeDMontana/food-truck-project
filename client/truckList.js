@@ -47,6 +47,70 @@ var MapHolderGlobal = React.createClass({
 
 
 
+// THIS HOLDS THE OPEN SIGN DATA = ONE TRUCK OBJECT
+
+var OpenSignParser = React.createClass({
+    
+    render: function(){
+        var self = this;
+        
+        var now = new Date();
+        var today = now.getDay();
+        
+        var dayIndex = today;
+
+        function getDayIndex(dayNum){
+            if (dayNum === 0){
+                return "sun";
+            } else if (dayNum === 1){
+                return "mon";
+            } else if (dayNum === 2){
+                return "tues";
+            } else if (dayNum === 3){
+                return "wed";
+            } else if (dayNum === 4){
+                return "thur";
+            } else if (dayNum === 5){
+                return "fri";
+            } else if (dayNum === 6){
+                return "sat";
+            }
+        };
+        
+         var timeSlotPrefix = getDayIndex(dayIndex);
+        
+        var timeSlotOpen = timeSlotPrefix + "Open";
+        var timeSlotClose = timeSlotPrefix + "Close";
+        
+        var openTime = new Date(this.props.data[timeSlotOpen]);
+        var closeTime = new Date(this.props.data[timeSlotClose]);
+        
+        var openHour = openTime.getHours();
+        var closeHour = closeTime.getHours();
+        
+        var openMin = openTime.getMinutes();
+        var closeMin = closeTime.getMinutes();
+        
+        console.log(now.getHours() >= openHour);
+
+        var renderAll = function(){
+            if  (now.getHours() >= openHour && now.getHours() <= closeHour ){
+                    return(
+                        <div>
+                            <img src="img/openSign.png" className="hidden-xs hidden-sm hidden-md truckList-open-lg"/>
+                            <img src="img/openSign.png" className="hidden-xs hidden-sm hidden-lg truckList-open-md"/>
+                            <img src="img/openSign.png" className="hidden-md hidden-lg truckList-open-xs"/>
+                        </div>
+                    )
+            }
+        };
+        
+        return <div>{renderAll()}</div>;
+    }
+        
+});
+
+
 
 // THIS HOLDS THE TRUCK LIST
 
@@ -83,9 +147,7 @@ var TruckList = React.createClass({
             var openSign = function(){
                 return(
                     <div>
-                        <img src="img/openSign.png" className="hidden-xs hidden-sm hidden-md truckList-open-lg"/>
-                        <img src="img/openSign.png" className="hidden-xs hidden-sm hidden-lg truckList-open-md"/>
-                        <img src="img/openSign.png" className="hidden-md hidden-lg truckList-open-xs"/>
+                        <OpenSignParser data={truck} toggleProfileID={self.props.toggleProfileID}/>
                     </div>
                 )
             };
