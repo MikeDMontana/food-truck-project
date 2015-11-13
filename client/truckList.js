@@ -95,7 +95,6 @@ var OpenSignParser = React.createClass({
 
         var renderAll = function(){
             if  (now.getHours() >= openHour && now.getHours() <= closeHour ){
-                if (now.getMinutes() >= openMin && now.getMinutes() <= closeMin){
                     return(
                         <div>
                             <img src="img/openSign.png" className="hidden-xs hidden-sm hidden-md truckList-open-lg"/>
@@ -103,7 +102,6 @@ var OpenSignParser = React.createClass({
                             <img src="img/openSign.png" className="hidden-md hidden-lg truckList-open-xs"/>
                         </div>
                     )
-                }
             }
         };
         
