@@ -74,7 +74,7 @@ var HoursSelector = React.createClass({
                 id={this.props.id}
                 hintText="Closed"
                 onDismiss={this.onDismiss}
-                style={{ top: '175px' }}/>
+                style={{ top: '175px' }}
                 textFieldStyle={{ width: '90%' }}/>
         )
     }
