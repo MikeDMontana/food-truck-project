@@ -54,11 +54,16 @@ var OpenSignParser = React.createClass({
     render: function(){
         var self = this;
         
+        // GET TODAY'S DATE INFO FOR REFERENCE
         var now = new Date();
         var today = now.getDay();
+        var currentTime = (now.getHours() * 60) + now.getMinutes();
         
+        // SORT FUNCTION INPUT VAR
         var dayIndex = today;
 
+        
+        // SORT FUNCTION TO GET THE RIGHT DAY'S HOURS
         function getDayIndex(dayNum){
             if (dayNum === 0){
                 return "sun";
@@ -77,24 +82,34 @@ var OpenSignParser = React.createClass({
             }
         };
         
-         var timeSlotPrefix = getDayIndex(dayIndex);
+        // ATTACH PREFIX TO CREATE PROPERTY ID FOR TRUCK 
+        var timeSlotPrefix = getDayIndex(dayIndex);
         
         var timeSlotOpen = timeSlotPrefix + "Open";
         var timeSlotClose = timeSlotPrefix + "Close";
         
+        
+        // GET AND CONVERT TRUCK HOURS TO JAVASCRIPT DATE OBJECTS
         var openTime = new Date(this.props.data[timeSlotOpen]);
         var closeTime = new Date(this.props.data[timeSlotClose]);
         
-        var openHour = openTime.getHours();
-        var closeHour = closeTime.getHours();
+        // CONVERT TRUCK HOURS TO MINUTES
+        var openHour = openTime.getHours() * 60;
+        var closeHour = closeTime.getHours() * 60;
         
+        // GET TRUCK MINUTES
         var openMin = openTime.getMinutes();
         var closeMin = closeTime.getMinutes();
         
-        console.log(now.getHours() >= openHour);
+        // COMBINE INTO SINGLE NUMBERS
+        var openCombined = openHour + openMin;
+        var closeCombined = closeHour + closeMin;
+        
+        
+        
 
         var renderAll = function(){
-            if  (now.getHours() >= openHour && now.getHours() <= closeHour ){
+            if  (currentTime >= openCombined && currentTime <= closeCombined){
                     return(
                         <div>
                             <img src="img/openSign.png" className="hidden-xs hidden-sm hidden-md truckList-open-lg"/>
