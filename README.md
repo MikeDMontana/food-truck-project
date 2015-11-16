@@ -20,9 +20,22 @@ Also notable are the inclusion of:
 - Passport (user authentication)
 - Google Maps Javascript API
 
+
+![Imgur](http://i.imgur.com/goWTTXw.png)
+![Imgur](http://i.imgur.com/fF6cUvo.png)
+![Imgur](http://i.imgur.com/RIVwJ8E.png)
+![Imgur](http://i.imgur.com/1KJ7ACb.png)
+
+
+
 ###VERSION MAP: 
 
 ##### V 1.0 - 
+- Mobile-Native port to iOS / Android.
+
+  ![Imgur](http://i.imgur.com/dU3aQLM.png)
+  ![Imgur](http://i.imgur.com/NEUiAZG.jpg)
+
 - Truck owners' tooling / dashboard. 
   - Edit profiles.
   - Output current location via iOS / Android location services.
