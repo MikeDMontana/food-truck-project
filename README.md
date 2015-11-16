@@ -18,7 +18,7 @@ Also notable are the inclusion of:
 - Passport (user authentication)
 - Google Maps Javascript API
 
-###FUTURE VERSIONS: 
+###VERSION MAP: 
 
 ##### V 1.0 - 
 - Truck owners' tooling / dashboard. 
