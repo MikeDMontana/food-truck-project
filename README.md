@@ -1,7 +1,6 @@
 # Truck Yeah!
 ## V 0.5
-###### Live Demo:
-https://truck-yeah.herokuapp.com/
+###### Live Demo: https://truck-yeah.herokuapp.com/
 
 *Truck Yeah* is a mobile-responsive web application designed to connect food truck owners with hungry customers. 
 
