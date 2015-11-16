@@ -38,7 +38,7 @@ Also notable are the inclusion of:
 - Truck owners' tooling / dashboard. 
   - Edit profiles.
   - Output current location via iOS / Android location services.
-  - Blast current location to Social Media
+  - Blast current location to Social Media.
   
 - Location recognition for consumers.
   - Generate directions to individual trucks.
@@ -50,6 +50,10 @@ Also notable are the inclusion of:
 - Admin-free truck entry.
   - Crowd-sourced / 'Claim your page'?
   - Ownership auth with Twitter?
+
+- Customer login auth with Facebook. 
+  - 'Favorite' the trucks you really like, and get push notifications when they're close to you.
+  - Send out a food request - if enough people in one area 'ping,' a truck might decide to show up!
   
 - Truck owners' analytics //  *FREEMIUM FEATURE*
 
